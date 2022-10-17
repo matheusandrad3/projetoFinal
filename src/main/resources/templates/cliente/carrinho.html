@@ -1,0 +1,156 @@
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+<head>
+    <title>Carrinho Araujo</title>
+</head>
+<body>
+<section layout:fragment="corpo">
+    <div class="container mt-5 p-3 rounded cart">
+        <div class="row no-gutters">
+            <div class="col-md-8">
+                <div class="product-details mr-2">
+                    <div class="d-flex flex-row align-items-center"><i class="fa fa-long-arrow-left"></i><a href="/produtos"
+                            class="ml-2 text-danger" style="text-decoration: none">Continue Comprando</a></div>
+                    <hr>
+                    <h6 class="mb-0">Shopping cart</h6>
+                    <div class="d-flex justify-content-between">
+                        <!--                            <span th:text="No seu carrinho tem ' + ${item.quantidade} + ' itens '"></span>-->
+                        <div class="d-flex flex-row align-items-center"><span class="text-black-50">Sort by:</span>
+                            <div class="price ml-2"><span class="mr-1">price</span><i class="fa fa-angle-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <table class=" table ">
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody th:each="item : ${listaItens}">
+                        <tr>
+                            <th scope="row">
+                                <img class="rounded" th:src="${item.produto.urlImagem}"
+                                     width="40">
+
+                            </th>
+
+                            <td>
+                                <div class="ml-2">
+                                    <span th:text="${item.produto.marca}" class="font-weight-bold d-block"></span>
+                                    <span th:text="${item.produto.descricao}" class="spec"></span></div>
+                            </td>
+
+
+                            <td class="d-flex mt-1 " style="height: 100px">
+                                <div>
+                                    <span th:text="${item.quantidade}" style="font-size: 16px;"></span>
+                                </div>
+                                <div class="d-flex">
+                                    <form th:action="@{/cliente/carrinho/alterarQuantidade/{id}/{acao}(id=${item.produto.id}, acao=${1})}"
+                                          th:method="PUT">
+                                        <button type="submit" style=" border: none;background-color:white">
+                                            <iconify-icon icon="gg:add-r"></iconify-icon>
+                                        </button>
+                                    </form>
+                                    <form th:action="@{/cliente/carrinho/alterarQuantidade/{id}/{acao}(id=${item.produto.id}, acao=${0})}"
+                                          th:method="PUT">
+                                        <button type="submit" style=" border: none;background-color:white">
+                                            <iconify-icon icon="gg:remove"></iconify-icon>
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row align-items-center">
+
+                                    <span th:text="${item.valorTotal}" class="d-block ml-5 font-weight-bold">$900</span>
+                                </div>
+                            </td>
+                            <td>
+                                <form th:action="@{/cliente/carrinho/remover/{id}(id=${item.produto.id})}"
+                                      th:method="DELETE">
+                                    <button type="submit" style="padding:auto; border: none;background-color:white">
+                                        <iconify-icon icon="gg:trash"></iconify-icon>
+                                    </button>
+                                </form>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+                <div class="col-md-4">
+                    <form th:action="@{/cliente/carrinho/sucesso}" th:method="POST">
+                    <div class="payment-info" >
+                        <div class="d-flex justify-content-between align-items-center"><span>Card details</span>
+                            <span th:text="${cliente.nome}" class="rounded text-primary" width="30"></span></div>
+                        <span class="type d-block mt-3 mb-1">Card type</span><label class="radio"> <input type="radio"
+                                                                                                          name ="formaPagmento"
+                                                                                                          value="Cartão de crédito MASTERCARD"
+                                                                                                          checked>
+                        <span><img width="30" src="https://img.icons8.com/color/48/000000/mastercard.png"/></span>
+                        </label>
+
+                        <label class="radio"> <input type="radio"  name ="formaPagmento"
+                                                     value="Cartão de crédito VISA"> <span><img width="30"
+                                                                                                          src="https://img.icons8.com/officel/48/000000/visa.png"/></span>
+                        </label>
+
+                        <label class="radio"> <input type="radio"  name ="formaPagmento"
+                                                     value="Cartão de crédito AMEX"> <span><img width="30"
+                                                                                                          src="https://img.icons8.com/ultraviolet/48/000000/amex.png"/></span>
+                        </label>
+
+
+                        <label class="radio"> <input type="radio"  name ="formaPagmento"
+                                                     value="Cartão de crédito PAYPAL"> <span><img width="30"
+                                                                                                          src="https://img.icons8.com/officel/48/000000/paypal.png"/></span>
+                        </label>
+                        <div><label class="credit-card-label">Name on card</label><input type="text"
+                                                                                         class="form-control credit-inputs"
+                                                                                         placeholder="Name"></div>
+                        <div><label class="credit-card-label">Card number</label><input type="text"
+                                                                                        class="form-control credit-inputs"
+                                                                                        placeholder="0000 0000 0000 0000">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><label class="credit-card-label">Date</label><input type="text"
+                                                                                                      class="form-control credit-inputs"
+                                                                                                      placeholder="12/24">
+                            </div>
+                            <div class="col-md-6"><label class="credit-card-label">CVV</label><input type="text"
+                                                                                                     class="form-control credit-inputs"
+                                                                                                     placeholder="342">
+                            </div>
+                        </div>
+                        <hr class="line">
+                        <div class="d-flex justify-content-between information"><span>Subtotal</span><span
+                                th:text="'R$ ' + ${compra.valorTotal}">R$3000.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between information"><span>Frete</span><span>R$ 00.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between information"><span>Total(Incl. taxes)</span><span
+                                th:text="'R$ ' + ${compra.valorTotal}">R$3000.00</span>
+                        </div>
+                        <button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="submit">
+                            <span th:text="'R$' + ${compra.valorTotal} + '  '">R$3000.00  </span>
+                            <span>Checkout<iconify-icon
+                                    icon="bi:arrow-right"></iconify-icon> </span>
+                        </button>
+                    </div>
+                    </form>
+                </div>
+
+        </div>
+
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+.bodyLogin{
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+#formLogin{
+    border: black;
+    box-Shadow:rgb(0 0 0 / 80%) 0px 6px 10px 0px;
+    width:350px;
+    height:450px;
+    align-items: self-start;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-image: linear-gradient( 96.5deg,  rgba(39,103,187,1) 10.4%, rgba(16,72,144,1) 87.7% );
+    color: white;
+    padding-left: 20px;
+}
+#logoLogin{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+#imgLogo{
+    margin-right: 15px;
+}
+
+#btnLogin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-left: 10px;
+}
+
+#btnGoogle{
+    margin-right: 70px;
+}
+
+#btnGoogle:hover{
+    cursor: pointer;
+}
+
+#emailSenha{
+    margin-left: 20px;
+}
+
+
