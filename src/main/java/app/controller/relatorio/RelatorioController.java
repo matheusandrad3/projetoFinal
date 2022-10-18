@@ -1,10 +1,7 @@
 package app.controller.relatorio;
 
-import app.model.Cliente;
 import app.model.Produto;
-import app.relatorio.ClienteTeste;
 import app.relatorio.Estoque;
-import app.repository.ClienteRepository;
 import app.repository.ProdutoRepository;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -26,13 +23,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/teste")
-public class TesteController {
+public class RelatorioController {
 
 
     @Autowired
     private ProdutoRepository repository;
 
-   /* @GetMapping
+    @GetMapping
     public ResponseEntity<byte[]> gerarRelatorio() throws JRException, FileNotFoundException {
         List<Estoque> lista = new ArrayList<>();
         try {
@@ -40,9 +37,9 @@ public class TesteController {
             for (Produto p : repository.findAll()) {
                 Estoque e = new Estoque();
                e.setNome(p.getNome());
-               e.setValorUnitario(p.getValorUnitario());
-               e.setQuantidade(p.getQuantidade());
-               e.setValorTotal(p.getQuantidade()*p.getValorUnitario());
+               e.setValorUnitario(p.getValorVenda());
+               e.setQuantidade(p.getQuantidadeEstoque());
+               e.setValorTotal(p.getQuantidadeEstoque()*p.getValorVenda());
                 lista.add(e);
             }
             Map<String, Object> empParams = new HashMap<String, Object>();
@@ -73,7 +70,7 @@ public class TesteController {
             return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-    }*/
+    }
 
 
 }
