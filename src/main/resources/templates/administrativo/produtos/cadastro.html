@@ -27,10 +27,10 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label> <input type="text"
-                                                                          class="form-control" id=""
-                                                                          placeholder="Descrição"
-                                                                          autofocus="autofocus" th:field="*{nome}"
-                                                                          value=""/>
+                                                          class="form-control" id=""
+                                                          placeholder="Descrição"
+                                                          autofocus="autofocus" th:field="*{nome}"
+                                                          value=""/>
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group col-md-6">
@@ -68,9 +68,18 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="nome">Url Imagen</label> <input type="text"
+                    <label for="nome">Quantidade estoque</label> <input type="text"
+                                                                    class="form-control" id="estoque"
+                                                                    placeholder="Estoque"
+                                                                    data-mask-reverse="true" th:field="*{quantidadeEstoque}"
+                                                                    value=""/>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="nome">Url Imagem</label> <input type="text"
                                                                 class="form-control" id="urlImagem"
-                                                                placeholder="Valor de Venda"
+                                                                placeholder="URL Imagem"
                                                                 data-mask-reverse="true" th:field="*{urlImagem}"
                                                                 value=""/>
                     <div class="invalid-feedback"></div>
