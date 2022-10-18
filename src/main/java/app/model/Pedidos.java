@@ -2,6 +2,7 @@ package app.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -9,15 +10,19 @@ import java.time.LocalDate;
 public class Pedidos {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Cliente cliente;
+    @OneToOne
+    private Transacao transacao;
+
+    @OneToMany(mappedBy = "pedidos", cascade = CascadeType.ALL)
+    private List<ItemPedido> itemPedido;
 
     private LocalDate dataCompra;
 
     private String formaPagmento;
+
     private Double valorTotal=0.;
 
     public Long getId() {
@@ -28,13 +33,20 @@ public class Pedidos {
         this.id = id;
     }
 
-
-    public Cliente getCliente() {
-        return cliente;
+    public Transacao getTransacao() {
+        return transacao;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setTransacao(Transacao transacao) {
+        this.transacao = transacao;
+    }
+
+    public List<ItemPedido> getItemPedido() {
+        return itemPedido;
+    }
+
+    public void setItemPedido(List<ItemPedido> itemPedido) {
+        this.itemPedido = itemPedido;
     }
 
     public LocalDate getDataCompra() {

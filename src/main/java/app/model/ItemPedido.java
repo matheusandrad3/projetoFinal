@@ -8,12 +8,14 @@ import javax.persistence.*;
 public class ItemPedido {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "id_produtos")
     private Produto produto;
     @ManyToOne
+    @JoinColumn(name = "id_pedidos")
     private Pedidos pedidos;
 
     private Integer quantidade = 0;

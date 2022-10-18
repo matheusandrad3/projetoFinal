@@ -33,7 +33,8 @@ public class ProdutoService {
     }
 
     public void consumirEstoque(Long id, Integer quantidade) {
-        Produto p = repository.getById(id);
+        Optional<Produto> produto = repository.findById(id);
+        Produto p = produto.get();
         if (p.getQuantidadeEstoque() >= quantidade) {
             p.setQuantidadeEstoque(p.getQuantidadeEstoque() - quantidade);
             repository.save(p);
