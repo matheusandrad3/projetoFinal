@@ -22,7 +22,7 @@ public class ClienteService {
         cliente.setSenha(new BCryptPasswordEncoder().encode(cliente.getSenha()));
         validarCpf(cliente.getCpf());
         validarRg(cliente.getRg());
-        cliente.setEnderecos(cliente.getEnderecos());
+        cliente.getEnderecos().setCliente(cliente);
         Transacao transacao = new Transacao();
         transacao.setCliente(cliente);
         cliente.setTransacao(transacao);

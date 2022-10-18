@@ -47,6 +47,7 @@ public class Cliente {
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.PERSIST)
     private Transacao transacao;
 
+
     public Long getId() {
         return id;
     }
@@ -117,5 +118,13 @@ public class Cliente {
 
     public void setTransacao(Transacao transacao) {
         this.transacao = transacao;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }
