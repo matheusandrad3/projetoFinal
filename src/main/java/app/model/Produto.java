@@ -35,6 +35,7 @@ public class Produto {
     private String descricao;
 
     @Column(name = "imagem")
+    @Size(max = 500, message = "O campo Imagem deve conter no máximo 500 caracteres!")
     @NotBlank(message = "O campo imagem não pode ser nulo ou vazio!")
     private String UrlImagem;
 
