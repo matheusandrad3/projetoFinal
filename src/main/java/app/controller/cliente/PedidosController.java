@@ -1,24 +1,19 @@
 package app.controller.cliente;
 
-import app.dto.pedidosDto.PedidosRequestDTO;
-import app.dto.pedidosDto.PedidosResponseDTO;
-import app.mapper.PedidosMapper;
 import app.model.Cliente;
 import app.model.ItemPedido;
 import app.model.Pedidos;
 import app.model.Produto;
-import app.repository.ClienteRepository;
 import app.repository.PedidosRepository;
 import app.repository.ProdutoRepository;
 import app.service.ClienteService;
 import app.service.PedidosService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
