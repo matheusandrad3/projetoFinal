@@ -65,14 +65,16 @@ public class PedidosController {
         model.addObject("compra", compra);
         model.addObject("listaItens", itensCompras);
         model.addObject("cliente", cliente);
-        compra.setCliente(cliente);
+        compra.setTransacao(cliente.getTransacao());
         compra.setFormaPagmento(formaPagmento);
         compra.setDataCompra(LocalDate.now());
-        pedidosRepository.saveAndFlush(compra);
+
         for(ItemPedido i:itensCompras){
             i.setPedidos(compra);
             produtoService.consumirEstoque(i.getProduto().getId(), i.getQuantidade());
         }
+        compra.setItemPedido(itensCompras);
+
         pedidosRepository.save(compra);
 
         service.setItensCompras(new ArrayList<>());
