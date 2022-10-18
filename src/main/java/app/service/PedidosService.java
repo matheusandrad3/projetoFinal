@@ -1,25 +1,16 @@
 package app.service;
 
-import app.dto.itensPedidosDto.ItensPedidosRequestDTO;
-import app.dto.pedidosDto.PedidosRequestDTO;
-
 import app.exeception.AraujoExeception;
-import app.model.Cliente;
 import app.model.ItemPedido;
 import app.model.Pedidos;
-import app.model.Produto;
-import app.model.enums.DisponibilidadeProduto;
-import app.model.enums.StatusPedido;
 import app.repository.PedidosRepository;
 import app.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PedidosService {
@@ -106,9 +97,20 @@ public class PedidosService {
         }
     }
 
-    public List<ItemPedido> intensPedidos() {
+    public List<ItemPedido> getItensCompras() {
         return itensCompras;
     }
 
+    public void setItensCompras(List<ItemPedido> itensCompras) {
+        this.itensCompras = itensCompras;
+    }
+
+    public Pedidos getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Pedidos compra) {
+        this.compra = compra;
+    }
 }
 
