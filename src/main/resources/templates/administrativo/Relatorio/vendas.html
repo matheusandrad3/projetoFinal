@@ -23,7 +23,7 @@
     </div>
 
     <div class="container" id="cadastro">
-        <form enctype="multipart/form-dat">
+        <form enctype="multipart/form-dat" th:action="@{/relatorio/pedidos}" th:object="${dto}" th:method="POST">
             <div class="container mt-5">
 
                 <div class="row">
@@ -33,7 +33,7 @@
 
                         <div class="md-form">
 
-                            <input placeholder="Selected starting date" type="date" id="inicio" class="form-control datepicker">
+                            <input placeholder="Selected starting date" th:field="*{dataInicio}" type="date" id="inicio" class="form-control datepicker">
                             <label>Início</label>
                         </div>
 
@@ -43,7 +43,7 @@
 
                         <div class="md-form">
 
-                            <input placeholder="Selected ending date" type="date" id="final" class="form-control datepicker">
+                            <input placeholder="Selected ending date" th:field="*{dataFinal}" type="date" id="final" class="form-control datepicker">
                             <label>Final</label>
                         </div>
 
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="row">
-                    <button type="button" class="btn btn-warning">Gerar relatório</button>
+                    <button type="submit" class="btn btn-warning">Gerar relatório</button>
                 </div>
             </div>
         </form>

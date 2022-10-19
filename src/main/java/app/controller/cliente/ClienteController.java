@@ -38,7 +38,7 @@ public class ClienteController {
 
     @PostMapping("/cadastrar")
     public ModelAndView cadastrar(ClienteRequestDTO dto) {
-        Cliente novoCliente = service.cadastarCliente(mapper.toCliente(dto));
+        service.cadastarCliente(mapper.toCliente(dto));
         ModelAndView model = new ModelAndView("/cliente/login");
         return model;
 
