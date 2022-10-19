@@ -57,8 +57,8 @@ public class PedidosController {
 
     @PostMapping("/sucesso")
     public ModelAndView finalizarCompra(String formaPagmento) {
-        Cliente cliente = clienteService.bucarUsuario();
         ModelAndView model = new ModelAndView("/cliente/finalizarCompra");
+        Cliente cliente = clienteService.bucarUsuario();
         List<ItemPedido> itensCompras = service.getItensCompras();
         Pedidos compra = new Pedidos();
         compra.setValorTotal(service.calcularTotalPedidos());

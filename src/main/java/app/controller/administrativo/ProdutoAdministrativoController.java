@@ -21,7 +21,6 @@ public class ProdutoAdministrativoController {
 
     @Autowired
     private ProdutoMapper mapper;
-
     /*
         @PostMapping
         public ResponseEntity<ProdutoResponseDTO> cadastrarProduto(@RequestBody @Valid ProdutoRequestDTO dto,

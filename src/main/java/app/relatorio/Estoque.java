@@ -7,9 +7,9 @@ public class Estoque {
 
     private Integer quantidade;
 
-    private Float valorUnitario;
+    private Double valorUnitario;
 
-    private Float valorTotal;
+    private Double valorTotal;
 
     public String getNome() {
         return nome;
@@ -27,19 +27,19 @@ public class Estoque {
         this.quantidade = quantidade;
     }
 
-    public Float getValorUnitario() {
+    public Double getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(Float valorUnitario) {
+    public void setValorUnitario(Double valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
 
-    public Float getValorTotal() {
+    public Double getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(Float valorTotal) {
+    public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
 }
