@@ -11,10 +11,7 @@ import app.service.PedidosService;
 import app.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
@@ -69,7 +66,7 @@ public class PedidosController {
         compra.setFormaPagmento(formaPagmento);
         compra.setDataCompra(LocalDate.now());
 
-        for(ItemPedido i:itensCompras){
+        for (ItemPedido i : itensCompras) {
             i.setPedidos(compra);
             produtoService.consumirEstoque(i.getProduto().getId(), i.getQuantidade());
         }
@@ -92,7 +89,7 @@ public class PedidosController {
             if (itens.getProduto().getId().equals(produto1.getId())) {
                 itens.setQuantidade(itens.getQuantidade() + 1);
                 itens.setValorTotal(0.);
-                itens.setValorTotal(itens.getValorTotal()+(itens.getQuantidade() * itens.getValorUnitario()));
+                itens.setValorTotal(itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario()));
                 controle = 1;
                 break;
             }
@@ -102,10 +99,48 @@ public class PedidosController {
             item.setProduto(produto1);
             item.setValorUnitario((double) produto1.getValorVenda());
             item.setQuantidade(item.getQuantidade() + 1);
-            item.setValorTotal(item.getValorTotal()+(item.getQuantidade() * item.getValorUnitario()));
+            item.setValorTotal(item.getValorTotal() + (item.getQuantidade() * item.getValorUnitario()));
             itensCompras.add(item);
         }
 
         return "redirect:/produtos";
+    }
+
+
+    @PutMapping("/alterarQuantidade/{id}/{acao}")
+    public String alterarQuantidade(@PathVariable Long id, @PathVariable Integer acao) {
+        List<ItemPedido> itensCompras = service.getItensCompras();
+        for (ItemPedido itens : itensCompras) {
+            if (itens.getProduto().getId().equals(id)) {
+                if (acao.equals(1)) {
+                    itens.setQuantidade(itens.getQuantidade() + 1);
+                    itens.setValorTotal(0.);
+                    itens.setValorTotal(itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario()));
+
+                } else if (acao == 0) {
+                    itens.setQuantidade(itens.getQuantidade() - 1);
+                    if (itens.getQuantidade() == 0){
+                        removerCarrinho(id);
+                    }
+                    itens.setValorTotal(0.);
+                    itens.setValorTotal(itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario()));
+                }
+                break;
+            }
+        }
+        return "redirect:/cliente/carrinho";
+    }
+
+    @DeleteMapping("/remover/{id}")
+    public String removerCarrinho(@PathVariable Long id) {
+        List<ItemPedido> itensCompras = service.getItensCompras();
+        for (ItemPedido itens : itensCompras) {
+            if (itens.getProduto().getId().equals(id)) {
+                itensCompras.remove(itens);
+                break;
+            }
+        }
+        return "redirect:/cliente/carrinho";
+
     }
 }
