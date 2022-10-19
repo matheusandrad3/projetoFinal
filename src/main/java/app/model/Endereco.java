@@ -1,7 +1,5 @@
 package app.model;
 
-import app.model.enums.UnidadeFederativa;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,12 +20,10 @@ public class Endereco {
     @NotBlank(message = "O campo cep não pode ser nulo ou vazio!")
     private String cep;
 
-
     @Column(name = "CIDADE")
     @Size(max = 100, message = "A Cidade deve conter no máximo 100 caracter!")
     @NotBlank(message = "O campo Cidade não pode ser nulo ou vazio!")
     private String cidade;
-
 
     @Column(name="BAIRRO")
     @Size(max = 100, message = "O Bairro deve conter no máximo 100 caracter!")
@@ -39,12 +35,9 @@ public class Endereco {
     @NotBlank(message = "O campo Rua não pode ser nulo ou vazio!")
     private String rua;
 
-
-
     @Column(name = "UF")
     @NotNull(message = "O campo UF não pode ser nulo ou vazio!")
     private String uf;
-
 
     @Size(min = 1, max = 10, message = "O numero deve ter no mínimo 1 e no máximo 10 caracteres!")
     @NotBlank(message = "O número não pode ser nulo ou vazio!")
