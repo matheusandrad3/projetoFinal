@@ -1,4 +1,4 @@
-package app.controller.administrativo;
+package app.dto.pedidosDto.administrativo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
