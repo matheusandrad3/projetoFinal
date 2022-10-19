@@ -14,11 +14,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.FileNotFoundException;
@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 @RequestMapping("/relatorio")
 public class RelatorioController {
 
@@ -38,14 +38,14 @@ public class RelatorioController {
     private PedidosRepository pedidoRepository;
 
 
-    /* Código que o matheus enviou
-
     @GetMapping("/administrativo/vendas")
     public ModelAndView relatoriosVendas(){
+        FiltroDataRequestDTO dto = new FiltroDataRequestDTO();
         ModelAndView model = new ModelAndView("/administrativo/relatorio/vendas");
+        model.addObject("dto", dto);
+
         return model;
     }
-     */
 
     @GetMapping("/produtos")
     public ResponseEntity<byte[]> gerarRelatorio() throws JRException, FileNotFoundException {
@@ -88,7 +88,7 @@ public class RelatorioController {
         }
     }
 
-    @GetMapping("/pedidos")
+    @PostMapping("/pedidos")
     public ResponseEntity<byte[]> gerarRelatorioPedidos(FiltroDataRequestDTO dto) throws JRException, FileNotFoundException {
         List<RelatorioPedidos> lista = new ArrayList<>();
         try {
