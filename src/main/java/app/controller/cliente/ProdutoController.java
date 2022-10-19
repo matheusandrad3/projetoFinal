@@ -18,15 +18,10 @@ public class ProdutoController {
     @Autowired
     private ProdutoMapper mapper;
 
-
     @GetMapping
     public ModelAndView index() {
         ModelAndView model = new ModelAndView("/index");
         model.addObject("listaProdutos", service.listarProdutos());
         return model;
     }
-
-
-
-
 }

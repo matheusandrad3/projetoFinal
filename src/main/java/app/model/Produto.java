@@ -27,7 +27,7 @@ public class Produto {
 
     @Column(name = "valor_unitario")
     @NotNull(message = "O campo valor unitário não pode ser vazio")
-    private float valorVenda;
+    private Double valorVenda;
 
     private String marca;
     @Column(name = "descricao")
@@ -75,11 +75,11 @@ public class Produto {
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public float getValorVenda() {
+    public Double getValorVenda() {
         return valorVenda;
     }
 
-    public void setValorVenda(float valorVenda) {
+    public void setValorVenda(Double valorVenda) {
         this.valorVenda = valorVenda;
     }
 
