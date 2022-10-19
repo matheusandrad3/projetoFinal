@@ -6,8 +6,8 @@
 	<queryString language="SQL">
 		<![CDATA[]]>
 	</queryString>
-	<field name="valorTotal" class="java.lang.Float"/>
-	<field name="valorUnitario" class="java.lang.Float"/>
+	<field name="valorTotal" class="java.lang.Double"/>
+	<field name="valorUnitario" class="java.lang.Double"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="quantidade" class="java.lang.Integer"/>
 	<background>

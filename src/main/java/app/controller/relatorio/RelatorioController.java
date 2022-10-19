@@ -22,22 +22,24 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/teste")
+@RequestMapping("/relatorio")
 public class RelatorioController {
+
 
     @Autowired
     private ProdutoRepository repository;
 
-    @GetMapping
+    @GetMapping("/produtos")
     public ResponseEntity<byte[]> gerarRelatorio() throws JRException, FileNotFoundException {
         List<Estoque> lista = new ArrayList<>();
         try {
+
             for (Produto p : repository.findAll()) {
                 Estoque e = new Estoque();
-               e.setNome(p.getNome());
-               e.setValorUnitario(p.getValorVenda());
-               e.setQuantidade(p.getQuantidadeEstoque());
-               e.setValorTotal(p.getQuantidadeEstoque()*p.getValorVenda());
+                e.setNome(p.getNome());
+                e.setValorUnitario(p.getValorVenda());
+                e.setQuantidade(p.getQuantidadeEstoque());
+                e.setValorTotal(p.getQuantidadeEstoque() * p.getValorVenda());
                 lista.add(e);
             }
 
@@ -56,6 +58,7 @@ public class RelatorioController {
                                     , new JRBeanCollectionDataSource(lista)
                             );
 
+
             HttpHeaders headers = new HttpHeaders();
             //set the PDF format
             headers.setContentType(MediaType.APPLICATION_PDF);
@@ -64,8 +67,9 @@ public class RelatorioController {
             return new ResponseEntity<byte[]>
                     (JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
 }
