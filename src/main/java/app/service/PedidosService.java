@@ -3,23 +3,16 @@ package app.service;
 import app.exeception.AraujoExeception;
 import app.model.ItemPedido;
 import app.model.Pedidos;
-import app.repository.PedidosRepository;
 import app.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import java.text.DecimalFormat;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PedidosService {
-
-    @Autowired
-    private PedidosRepository pedidosRepository;
-
-    @Autowired
-    private ClienteService clienteService;
 
     @Autowired
     private ProdutoRepository produtoRepository;
