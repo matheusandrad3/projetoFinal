@@ -115,6 +115,7 @@ public class ProdutoService {
     }
 
     public void finalizarCompra(Cliente cliente, Pedidos compra, List<ItemPedido> itensCompras, String formaPagmento) {
+
         compra.setTransacao(cliente.getTransacao());
         compra.setFormaPagmento(formaPagmento);
         compra.setDataCompra(LocalDate.now());
