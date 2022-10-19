@@ -3,7 +3,6 @@ package app.service;
 import app.exeception.AraujoExeception;
 import app.model.Produto;
 import app.model.enums.DisponibilidadeProduto;
-import app.repository.CategoriaRepository;
 import app.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +18,7 @@ public class ProdutoService {
     private ProdutoRepository repository;
 
     @Autowired
-    private CategoriaRepository categoriaRepository;
-
-    @Autowired
     private ClienteService service;
-
-    @Autowired
-    CategoriaService categoriaService;
 
     public Produto cadastrarProduto(Produto produto) {
         produto.setDisponibilidade(DisponibilidadeProduto.DISPONIVEL);

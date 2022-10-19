@@ -1,4 +1,4 @@
-package app.controller.administrativo;
+package app.dto.pedidosDto.administrativo;
 
 import app.dto.produtoDto.ProdutoRequestDTO;
 import app.mapper.ProdutoMapper;
