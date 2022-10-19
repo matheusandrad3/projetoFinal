@@ -1,16 +1,13 @@
 package app.service;
 
 import app.exeception.AraujoExeception;
-
 import app.model.Cliente;
 import app.model.ItemPedido;
 import app.model.Pedidos;
 import app.model.Produto;
 import app.model.enums.DisponibilidadeProduto;
-
 import app.repository.PedidosRepository;
 import app.repository.ProdutoRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -61,7 +58,7 @@ public class ProdutoService {
         return produtoRepository.findById(id);
     }
 
-    public void removerCarrinho(Long id){
+    public void removerCarrinho(Long id) {
         List<ItemPedido> itensCompras = pedidosService.getItensCompras();
         for (ItemPedido itens : itensCompras) {
             if (itens.getProduto().getId().equals(id)) {
@@ -71,7 +68,7 @@ public class ProdutoService {
         }
     }
 
-    public void alterarQuantidade(Long id, Integer acao){
+    public void alterarQuantidade(Long id, Integer acao) {
         List<ItemPedido> itensCompras = pedidosService.getItensCompras();
         for (ItemPedido itens : itensCompras) {
             if (itens.getProduto().getId().equals(id)) {
@@ -82,7 +79,7 @@ public class ProdutoService {
 
                 } else if (acao == 0) {
                     itens.setQuantidade(itens.getQuantidade() - 1);
-                    if (itens.getQuantidade() == 0){
+                    if (itens.getQuantidade() == 0) {
                         removerCarrinho(id);
                     }
                     itens.setValorTotal(0.);
@@ -117,7 +114,7 @@ public class ProdutoService {
         }
     }
 
-    public void finalizarCompra(Cliente cliente, Pedidos compra, List<ItemPedido> itensCompras,String formaPagmento) {
+    public void finalizarCompra(Cliente cliente, Pedidos compra, List<ItemPedido> itensCompras, String formaPagmento) {
         compra.setTransacao(cliente.getTransacao());
         compra.setFormaPagmento(formaPagmento);
         compra.setDataCompra(LocalDate.now());

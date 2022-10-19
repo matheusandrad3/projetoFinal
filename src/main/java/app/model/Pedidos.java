@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-
 @Entity
 @Table(name = "TB_PEDIDOS")
 public class Pedidos {
@@ -23,7 +22,7 @@ public class Pedidos {
 
     private String formaPagmento;
 
-    private Double valorTotal=0.;
+    private Double valorTotal = 0.;
 
     public Long getId() {
         return id;

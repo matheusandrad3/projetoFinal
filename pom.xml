@@ -123,7 +123,18 @@
             <artifactId>jasperreports</artifactId>
             <version>6.20.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.4</version>
+        </dependency>
 
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-webflux-ui</artifactId>
+            <version>1.6.11</version>
+        </dependency>
 
         <!-- Thanks for using https://jar-download.com -->
 

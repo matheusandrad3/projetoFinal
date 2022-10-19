@@ -1,19 +1,16 @@
 package app.dto.clienteDto;
 
 import app.dto.enderecoDto.EnderecoRequestDTO;
-
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
 
 public class ClienteRequestDTO {
 
     @NotBlank(message = "O Nome não pode ser vazio!")
     @Size(max = 100, message = "O Nome deve conter no máximo 100 caracter!")
     private String nome;
-
 
     @NotBlank(message = "A Senha não pode ser vazia!")
     @Size(min = 6, message = "A Senha deve conter no mínimo 6 caracter!")
@@ -33,7 +30,6 @@ public class ClienteRequestDTO {
     private String rg;
     private EnderecoRequestDTO endereco;
 
-
     public String getNome() {
         return nome;
     }
@@ -41,7 +37,6 @@ public class ClienteRequestDTO {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 
     public String getSenha() {
         return senha;

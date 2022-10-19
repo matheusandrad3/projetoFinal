@@ -1,12 +1,10 @@
 package app.dto.pedidosDto;
 
 import app.dto.itensPedidosDto.ItensPedidosRequestDTO;
-import app.model.ItemPedido;
 
 import java.util.List;
 
 public class PedidosRequestDTO {
-
 
     private List<ItensPedidosRequestDTO> pedidos;
 

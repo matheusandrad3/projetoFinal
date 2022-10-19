@@ -41,22 +41,6 @@ public class ClienteService {
         }
     }
 
-    public Cliente validarLogin(String email, String senha) {
-        Cliente cliente = null;
-        String mensagemErro = "Login ou senha invalido";
-        if (repository.existsByEmail(email)) {
-            String senhaUsuario = repository.getSenhaByEmail(email);
-            if (senha.equals(senhaUsuario)) {
-               // cliente = repository.getByEmail(email);
-            } else {
-                throw new AraujoExeception(mensagemErro, HttpStatus.UNAUTHORIZED);
-            }
-        } else {
-            throw new AraujoExeception(mensagemErro, HttpStatus.UNAUTHORIZED);
-        }
-        return cliente;
-    }
-
     public Cliente bucarUsuario() {
         Authentication auntenticado = SecurityContextHolder.getContext().getAuthentication();
         Cliente cliente = null;

@@ -1,4 +1,4 @@
-package app.dto.pedidosDto.administrativo;
+package app.controller.administrativo;
 
 import app.dto.produtoDto.ProdutoRequestDTO;
 import app.mapper.ProdutoMapper;
@@ -21,16 +21,7 @@ public class ProdutoAdministrativoController {
 
     @Autowired
     private ProdutoMapper mapper;
-    /*
-        @PostMapping
-        public ResponseEntity<ProdutoResponseDTO> cadastrarProduto(@RequestBody @Valid ProdutoRequestDTO dto,
-                                                                   @RequestHeader("email") String email,
-                                                                   @RequestHeader("senha") String senha) {
-            Produto novoProduto = mapper.toProduto(dto);
-            service.cadastrarProduto(novoProduto, email, senha);
-            return ResponseEntity.ok(mapper.toProdutoResponseDTO(novoProduto));
-        }
-    */
+
     @GetMapping("/cadastro")
     public ModelAndView cadastrar(ProdutoRequestDTO produto) {
         ModelAndView model = new ModelAndView("administrativo/produtos/cadastro");

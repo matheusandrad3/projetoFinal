@@ -25,7 +25,6 @@ import java.util.Map;
 @RequestMapping("/relatorio")
 public class RelatorioController {
 
-
     @Autowired
     private ProdutoRepository repository;
 
@@ -42,7 +41,6 @@ public class RelatorioController {
                 e.setValorTotal(p.getQuantidadeEstoque() * p.getValorVenda());
                 lista.add(e);
             }
-
             Map<String, Object> empParams = new HashMap<String, Object>();
             empParams.put("Araujo", "app");
             empParams.put("Estoque", new JRBeanCollectionDataSource(lista));
@@ -58,7 +56,6 @@ public class RelatorioController {
                                     , new JRBeanCollectionDataSource(lista)
                             );
 
-
             HttpHeaders headers = new HttpHeaders();
             //set the PDF format
             headers.setContentType(MediaType.APPLICATION_PDF);
@@ -70,6 +67,5 @@ public class RelatorioController {
         } catch (Exception e) {
             return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 }

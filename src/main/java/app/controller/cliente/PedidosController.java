@@ -3,8 +3,6 @@ package app.controller.cliente;
 import app.model.Cliente;
 import app.model.ItemPedido;
 import app.model.Pedidos;
-import app.repository.PedidosRepository;
-import app.repository.ProdutoRepository;
 import app.service.ClienteService;
 import app.service.PedidosService;
 import app.service.ProdutoService;
@@ -68,7 +66,7 @@ public class PedidosController {
 
     @PutMapping("/alterarQuantidade/{id}/{acao}")
     public String alterarQuantidade(@PathVariable Long id, @PathVariable Integer acao) {
-        produtoService.alterarQuantidade(id,acao);
+        produtoService.alterarQuantidade(id, acao);
         return "redirect:/cliente/carrinho";
     }
 

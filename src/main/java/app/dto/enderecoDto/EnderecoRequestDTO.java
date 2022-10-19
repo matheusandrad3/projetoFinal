@@ -107,5 +107,4 @@ public class EnderecoRequestDTO {
         this.complemento = complemento;
     }
 
-
 }
