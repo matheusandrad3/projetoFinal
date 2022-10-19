@@ -17,8 +17,8 @@ public class Endereco {
     @ManyToOne
     private Cliente cliente;
 
-    @Column(name="CEP")
-    @Size(min =9 , max = 9, message = "O CEP deve estar no formato 99999-999")
+    @Column(name = "CEP")
+    @Size(min = 9, max = 9, message = "O CEP deve estar no formato 99999-999")
     @NotBlank(message = "O campo cep não pode ser nulo ou vazio!")
     private String cep;
 
@@ -27,12 +27,12 @@ public class Endereco {
     @NotBlank(message = "O campo Cidade não pode ser nulo ou vazio!")
     private String cidade;
 
-    @Column(name="BAIRRO")
+    @Column(name = "BAIRRO")
     @Size(max = 100, message = "O Bairro deve conter no máximo 100 caracter!")
     @NotBlank(message = "O campo Bairro não pode ser nulo ou vazio!")
     private String bairro;
 
-    @Column(name="RUA")
+    @Column(name = "RUA")
     @Size(max = 100, message = "A Rua deve conter no máximo 100 caracter!")
     @NotBlank(message = "O campo Rua não pode ser nulo ou vazio!")
     private String rua;
@@ -44,10 +44,10 @@ public class Endereco {
 
     @Size(min = 1, max = 10, message = "O numero deve ter no mínimo 1 e no máximo 10 caracteres!")
     @NotBlank(message = "O número não pode ser nulo ou vazio!")
-    @Column(name="NUMERO")
+    @Column(name = "NUMERO")
     private String numero;
 
-    @Column(name="COMPLEMENTO")
+    @Column(name = "COMPLEMENTO")
     @Size(max = 100, message = "O Complemento deve conter no máximo 100 caracter!")
     private String complemento;
 

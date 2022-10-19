@@ -2,7 +2,6 @@ package app.model;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "TB_ITENS_PEDIDO")
 public class ItemPedido {

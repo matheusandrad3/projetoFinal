@@ -1,9 +1,6 @@
 package app.dto.itensPedidosDto;
 
-import javax.validation.constraints.NotNull;
-
 public class ItensPedidosRequestDTO {
-
 
     private Long codProduto;
     private Integer quantidade;

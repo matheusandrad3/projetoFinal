@@ -23,7 +23,7 @@ public class ClienteController {
 
 
     @GetMapping("/cadastro")
-    public ModelAndView cadastro(ClienteRequestDTO cliente){
+    public ModelAndView cadastro(ClienteRequestDTO cliente) {
         ModelAndView model = new ModelAndView("/cliente/cadastro");
         model.addObject("cliente", cliente);
         model.addObject("endereco", cliente.getEndereco());
@@ -31,7 +31,7 @@ public class ClienteController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login(ClienteRequestDTO cliente){
+    public ModelAndView login(ClienteRequestDTO cliente) {
         ModelAndView model = new ModelAndView("/cliente/login");
         return model;
     }
@@ -40,13 +40,8 @@ public class ClienteController {
     public ModelAndView cadastrar(ClienteRequestDTO dto) {
         Cliente novoCliente = service.cadastarCliente(mapper.toCliente(dto));
         ModelAndView model = new ModelAndView("/cliente/login");
-        return  model;
+        return model;
 
-/*    @GetMapping("/login")
-    public ResponseEntity<ClienteLoginResponseDTO> login(@RequestBody @Valid ClienteLoginRequestDTO dto) {
-        Cliente cli = service.validarLogin(dto.getEmail(), dto.getSenha());
-        return ResponseEntity.ok(mapper.toClienteLoginResponseDTO(cli));
-    }*/
     }
 }
 

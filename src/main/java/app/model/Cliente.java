@@ -1,11 +1,10 @@
 package app.model;
 
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "users")
@@ -46,7 +45,6 @@ public class Cliente {
 
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.PERSIST)
     private Transacao transacao;
-
 
     public Long getId() {
         return id;

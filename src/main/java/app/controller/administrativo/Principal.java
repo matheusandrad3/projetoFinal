@@ -1,4 +1,4 @@
-package app.dto.pedidosDto.administrativo;
+package app.controller.administrativo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Principal {
 
     @GetMapping("/administrativo")
-    public String acessarPrincipal(){
+    public String acessarPrincipal() {
         return "administrativo/home";
     }
 
     @GetMapping("/home")
-    public String acessarHome(){
+    public String acessarHome() {
         return "home";
     }
 }

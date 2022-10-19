@@ -1,6 +1,5 @@
 package app.relatorio;
 
-
 public class Estoque {
 
     private String nome;

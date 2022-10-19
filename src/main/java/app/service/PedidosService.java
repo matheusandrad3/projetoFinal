@@ -16,14 +16,13 @@ public class PedidosService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
-
     private List<ItemPedido> itensCompras = new ArrayList<ItemPedido>();
     private Pedidos compra = new Pedidos();
 
     public Double calcularTotalPedidos() {
         Double valorTotal = 0.0;
         for (ItemPedido item : itensCompras) {
-          valorTotal += item.getValorTotal() + compra.getValorTotal();
+            valorTotal += item.getValorTotal() + compra.getValorTotal();
         }
         return valorTotal;
     }

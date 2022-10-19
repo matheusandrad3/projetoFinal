@@ -10,8 +10,8 @@ public class Transacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-/*    @OneToMany(mappedBy = "transacao")
-    private List<Pedidos> pedidos;*/
+    @OneToMany(mappedBy = "transacao")
+    private List<Pedidos> pedidos;
 
     @OneToOne
     private Cliente cliente;
@@ -32,12 +32,11 @@ public class Transacao {
         this.cliente = cliente;
     }
 
-
-   /* public List<Pedidos> getCarrinhos() {
+    public List<Pedidos> getCarrinhos() {
         return pedidos;
     }
 
     public void setCarrinhos(List<Pedidos> pedidos) {
         this.pedidos = pedidos;
-    }*/
+    }
 }
