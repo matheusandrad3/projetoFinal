@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface PedidosRepository  extends JpaRepository<Pedidos, Long> {
 
-    /*@Query(name="Select * from tb_pedidos where data_compra >= :dataInicio AND data_compra <= :dataFinal", nativeQuery = true)
+    @Query(value="Select * from tb_pedidos where data_compra >= :dataInicio AND data_compra <= :dataFinal", nativeQuery = true)
     List<Pedidos> findAllPedidos(String dataInicio, String dataFinal);
 
-    */
+
 }

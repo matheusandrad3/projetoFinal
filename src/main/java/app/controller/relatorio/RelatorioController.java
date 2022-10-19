@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -35,6 +36,16 @@ public class RelatorioController {
 
     @Autowired
     private PedidosRepository pedidoRepository;
+
+
+    /* Código que o matheus enviou
+
+    @GetMapping("/administrativo/vendas")
+    public ModelAndView relatoriosVendas(){
+        ModelAndView model = new ModelAndView("/administrativo/relatorio/vendas");
+        return model;
+    }
+     */
 
     @GetMapping("/produtos")
     public ResponseEntity<byte[]> gerarRelatorio() throws JRException, FileNotFoundException {
@@ -78,11 +89,11 @@ public class RelatorioController {
     }
 
     @GetMapping("/pedidos")
-    public ResponseEntity<byte[]> gerarRelatorioPedidos() throws JRException, FileNotFoundException {
+    public ResponseEntity<byte[]> gerarRelatorioPedidos(FiltroDataRequestDTO dto) throws JRException, FileNotFoundException {
         List<RelatorioPedidos> lista = new ArrayList<>();
         try {
 
-            for (Pedidos p : pedidoRepository.findAll()) {
+            for (Pedidos p : pedidoRepository.findAllPedidos(dto.getDataInicio(), dto.getDataFinal())) {
                 RelatorioPedidos pedidos = new RelatorioPedidos();
                 pedidos.setDataCompra(p.getDataCompra().toString());
                 pedidos.setFormaPagamento(p.getFormaPagmento());
