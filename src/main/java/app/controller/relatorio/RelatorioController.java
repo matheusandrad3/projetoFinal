@@ -1,10 +1,10 @@
 package app.controller.relatorio;
 
 import app.dto.relatorioDto.FiltroDataRequestDTO;
-import app.model.Pedidos;
 import app.model.Produto;
+import app.model.Teste;
 import app.relatorio.Estoque;
-import app.relatorio.RelatorioPedidos;
+import app.relatorio.RelatorioItensPedidos;
 import app.repository.PedidosRepository;
 import app.repository.ProdutoRepository;
 import net.sf.jasperreports.engine.*;
@@ -90,15 +90,13 @@ public class RelatorioController {
 
     @PostMapping("/pedidos")
     public ResponseEntity<byte[]> gerarRelatorioPedidos(FiltroDataRequestDTO dto) throws JRException, FileNotFoundException {
-        List<RelatorioPedidos> lista = new ArrayList<>();
+        List<RelatorioItensPedidos> lista = new ArrayList<>();
         try {
 
-            for (Pedidos p : pedidoRepository.findAllPedidos(dto.getDataInicio(), dto.getDataFinal())) {
-                RelatorioPedidos pedidos = new RelatorioPedidos();
-                pedidos.setDataCompra(p.getDataCompra().toString());
-                pedidos.setFormaPagamento(p.getFormaPagmento());
-                pedidos.setValorTotal(p.getValorTotal());
-                lista.add(pedidos);
+            for (Teste p : pedidoRepository.findAllPedidos(dto.getDataInicio(), dto.getDataFinal())) {
+                RelatorioItensPedidos i = new RelatorioItensPedidos();
+                i.setNome(p.getNome());
+                lista.add(i);
             }
             Map<String, Object> empParams = new HashMap<String, Object>();
             empParams.put("Araujo", "app");
@@ -109,7 +107,7 @@ public class RelatorioController {
                             (
                                     JasperCompileManager.compileReport(
                                             ResourceUtils
-                                                    .getFile("classpath:Pedidos.jrxml")
+                                                    .getFile("classpath:ItensPedidos.jrxml")
                                                     .getAbsolutePath()) // path of the jasper report
                                     , empParams // dynamic parameters
                                     , new JRBeanCollectionDataSource(lista)
@@ -118,7 +116,7 @@ public class RelatorioController {
             HttpHeaders headers = new HttpHeaders();
             //set the PDF format
             headers.setContentType(MediaType.APPLICATION_PDF);
-            headers.setContentDispositionFormData("filename", "Pedidos.pdf");
+            headers.setContentDispositionFormData("filename", "ItensPedidos.pdf");
             //create the report in PDF format
             return new ResponseEntity<byte[]>
                     (JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
