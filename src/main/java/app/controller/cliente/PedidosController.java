@@ -5,7 +5,6 @@ import app.model.ItemPedido;
 import app.model.Pedidos;
 import app.service.ClienteService;
 import app.service.PedidosService;
-import app.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +22,6 @@ public class PedidosController {
 
     @Autowired
     private ClienteService clienteService;
-
-    @Autowired
-    private ProdutoService produtoService;
 
     @GetMapping()
     public ModelAndView chamarCarrinho() {
@@ -51,7 +47,7 @@ public class PedidosController {
         model.addObject("listaItens", itensCompras);
         model.addObject("cliente", cliente);
 
-        produtoService.finalizarCompra(cliente, compra, itensCompras, formaPagmento);
+        pedidosService.finalizarCompra(cliente, compra, itensCompras, formaPagmento);
 
         pedidosService.setItensCompras(new ArrayList<>());
         pedidosService.setCompra(new Pedidos());
@@ -60,19 +56,19 @@ public class PedidosController {
 
     @PostMapping("/comprar/{id}")
     public String addCarrinho(@PathVariable Long id) {
-        produtoService.addCarrinho(id);
+        pedidosService.addCarrinho(id);
         return "redirect:/produtos";
     }
 
     @PutMapping("/alterarQuantidade/{id}/{acao}")
     public String alterarQuantidade(@PathVariable Long id, @PathVariable Integer acao) {
-        produtoService.alterarQuantidade(id, acao);
+        pedidosService.alterarQuantidade(id, acao);
         return "redirect:/cliente/carrinho";
     }
 
     @DeleteMapping("/remover/{id}")
     public String removerCarrinho(@PathVariable Long id) {
-        produtoService.removerCarrinho(id);
+        pedidosService.removerCarrinho(id);
         return "redirect:/cliente/carrinho";
     }
 }
