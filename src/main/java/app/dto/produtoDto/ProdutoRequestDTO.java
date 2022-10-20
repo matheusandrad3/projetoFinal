@@ -23,6 +23,8 @@ public class ProdutoRequestDTO {
     private String marca;
     private Double quantidadeEstoque;
 
+    private Double valorCheio;
+
     @Column(name = "imagem")
     @NotBlank(message = "O campo imagem não pode ser nulo ou vazio!")
     private String UrlImagem;
@@ -90,6 +92,14 @@ public class ProdutoRequestDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Double getValorCheio() {
+        return valorCheio;
+    }
+
+    public void setValorCheio(Double valorCheio) {
+        this.valorCheio = valorCheio;
     }
 }
 

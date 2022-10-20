@@ -43,6 +43,8 @@ public class Produto {
     @Column(name = "Disponibilidade")
     private DisponibilidadeProduto disponibilidade;
 
+    private Double valorCheio;
+
     public Long getId() {
         return id;
     }
@@ -113,5 +115,13 @@ public class Produto {
 
     public void setDisponibilidade(DisponibilidadeProduto disponibilidade) {
         this.disponibilidade = disponibilidade;
+    }
+
+    public Double getValorCheio() {
+        return valorCheio;
+    }
+
+    public void setValorCheio(Double valorCheio) {
+        this.valorCheio = valorCheio;
     }
 }
