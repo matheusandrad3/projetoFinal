@@ -121,6 +121,7 @@ public class PedidoService {
         compra.setDataCompra(LocalDate.now());
         Double valorTotal = calcularTotalPedidos();
         if(valorTotal != 0){
+            compra.setValorTotal(valorTotal);
             for (ItemPedido i : itensCompras) {
                 i.setPedidos(compra);
                 consumirEstoque(i.getProduto().getId(), i.getQuantidade());
