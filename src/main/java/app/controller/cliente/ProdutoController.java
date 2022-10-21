@@ -1,12 +1,11 @@
 package app.controller.cliente;
 
 import app.mapper.ProdutoMapper;
+import app.model.Produto;
 import app.repository.ProdutoRepository;
 import app.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
@@ -68,6 +67,13 @@ public class ProdutoController {
     public ModelAndView buscarPorDestaque() {
         ModelAndView model = new ModelAndView("/cliente/produtos/destaque");
         model.addObject("listaProdutos", repository.findByCategoria("destaque semana"));
+        return model;
+    }
+    @PostMapping("/produtos/pesquisarnome")
+    public ModelAndView buscarPorNome(@RequestParam("nomepesquisa") String nomepesquisa) {
+        ModelAndView model = new ModelAndView("/cliente/produtos/nome");
+        model.addObject("listaProdutos", repository.findByName(nomepesquisa));
+        model.addObject("listaProdutobj", new Produto());
         return model;
     }
 }
