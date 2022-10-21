@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 public class ProdutoRequestDTO {
 
     private Long id;
+
     @Column(name = "Nome")
     @Size(max = 100, message = "O campo nome deve conter no máximo 100 caracteres!")
     @NotBlank(message = "O campo Nome não pode ser nulo ou vazio!")
@@ -16,12 +17,16 @@ public class ProdutoRequestDTO {
     @Column(name = "descricao")
     @NotBlank(message = "O campo descrição não pode ser nulo ou vazio!")
     private String descricao;
+
     @Column(name = "valor_unitario")
     @NotNull(message = "O campo valor unitário não pode ser vazio")
     private Double valorVenda;
+
     private String categoria;
+
     private String marca;
-    private Double quantidadeEstoque;
+
+    private Integer quantidadeEstoque;
 
     private Double valorCheio;
 
@@ -44,7 +49,6 @@ public class ProdutoRequestDTO {
     public void setUrlImagem(String urlImagem) {
         UrlImagem = urlImagem;
     }
-
 
     public String getDescricao() {
         return descricao;
@@ -78,11 +82,11 @@ public class ProdutoRequestDTO {
         this.marca = marca;
     }
 
-    public Double getQuantidadeEstoque() {
+    public Integer getQuantidadeEstoque() {
         return quantidadeEstoque;
     }
 
-    public void setQuantidadeEstoque(Double quantidadeEstoque) {
+    public void setQuantidadeEstoque(Integer quantidadeEstoque) {
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
@@ -102,5 +106,3 @@ public class ProdutoRequestDTO {
         this.valorCheio = valorCheio;
     }
 }
-
-

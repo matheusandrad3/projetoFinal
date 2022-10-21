@@ -11,7 +11,7 @@ public class Transacao {
     private Long id;
 
     @OneToMany(mappedBy = "transacao")
-    private List<Pedidos> pedidos;
+    private List<Pedido> pedidos;
 
     @OneToOne
     private Cliente cliente;
@@ -32,11 +32,11 @@ public class Transacao {
         this.cliente = cliente;
     }
 
-    public List<Pedidos> getCarrinhos() {
+    public List<Pedido> getCarrinhos() {
         return pedidos;
     }
 
-    public void setCarrinhos(List<Pedidos> pedidos) {
+    public void setCarrinhos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
 }

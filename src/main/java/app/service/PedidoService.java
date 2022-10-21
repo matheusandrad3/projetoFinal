@@ -3,9 +3,9 @@ package app.service;
 import app.exeception.AraujoExeception;
 import app.model.Cliente;
 import app.model.ItemPedido;
-import app.model.Pedidos;
+import app.model.Pedido;
 import app.model.Produto;
-import app.repository.PedidosRepository;
+import app.repository.PedidoRepository;
 import app.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,22 +17,22 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PedidosService {
+public class PedidoService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
     @Autowired
-    private PedidosRepository pedidosRepository;
+    private PedidoRepository pedidoRepository;
 
     private List<ItemPedido> itensCompras = new ArrayList<ItemPedido>();
-    private Pedidos compra = new Pedidos();
+    private Pedido compra = new Pedido();
 
     public Double calcularTotalPedidos() {
         Double valorTotal = 0.0;
         for (ItemPedido item : itensCompras) {
             valorTotal += item.getValorTotal() + compra.getValorTotal();
         }
-        return valorTotal;
+        return converterValor(valorTotal);
     }
 
     public void validarProduto(Long id) {
@@ -64,10 +64,12 @@ public class PedidosService {
 
     public void alterarQuantidade(Long id, Integer acao) {
         List<ItemPedido> itensCompras = getItensCompras();
+
         double valorTotal = 0.0;
         for (ItemPedido itens : itensCompras) {
+            Integer quantidadeEstoque = produtoRepository.getQuantidadeEstoqueById(id);
             if (itens.getProduto().getId().equals(id)) {
-                if (acao.equals(1)) {
+                if (acao.equals(1) && itens.getQuantidade() < quantidadeEstoque) {
                     itens.setQuantidade(itens.getQuantidade() + 1);
                     itens.setValorTotal(0.);
                     valorTotal = itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario());
@@ -113,21 +115,25 @@ public class PedidosService {
         }
     }
 
-    public void finalizarCompra(Cliente cliente, Pedidos compra, List<ItemPedido> itensCompras, String formaPagmento) {
+    public boolean finalizarCompra(Cliente cliente, Pedido compra, List<ItemPedido> itensCompras, String formaPagmento) {
         compra.setTransacao(cliente.getTransacao());
         compra.setFormaPagmento(formaPagmento);
         compra.setDataCompra(LocalDate.now());
-        compra.setValorTotal(calcularTotalPedidos());
-        for (ItemPedido i : itensCompras) {
-            i.setPedidos(compra);
-            consumirEstoque(i.getProduto().getId(), i.getQuantidade());
+        Double valorTotal = calcularTotalPedidos();
+        if(valorTotal != 0){
+            for (ItemPedido i : itensCompras) {
+                i.setPedidos(compra);
+                consumirEstoque(i.getProduto().getId(), i.getQuantidade());
+            }
+            compra.setItemPedido(itensCompras);
+
+            pedidoRepository.save(compra);
+
+            setItensCompras(new ArrayList<>());
+            setCompra(new Pedido());
+            return true;
         }
-        compra.setItemPedido(itensCompras);
-
-        pedidosRepository.save(compra);
-
-        setItensCompras(new ArrayList<>());
-        setCompra(new Pedidos());
+        return false;
     }
 
     private Double converterValor(Double valor) {
@@ -147,11 +153,11 @@ public class PedidosService {
         this.itensCompras = itensCompras;
     }
 
-    public Pedidos getCompra() {
+    public Pedido getCompra() {
         return compra;
     }
 
-    public void setCompra(Pedidos compra) {
+    public void setCompra(Pedido compra) {
         this.compra = compra;
     }
 }

@@ -28,6 +28,7 @@ public class ClienteRequestDTO {
 
     @NotBlank(message = "O RG não pode ser vazio!")
     private String rg;
+
     private EnderecoRequestDTO endereco;
 
     public String getNome() {

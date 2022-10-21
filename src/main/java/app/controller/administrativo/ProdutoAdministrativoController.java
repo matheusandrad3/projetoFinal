@@ -29,7 +29,6 @@ public class ProdutoAdministrativoController {
         return model;
     }
 
-
     @PostMapping("/salvar")
     public ModelAndView salvar(@Valid ProdutoRequestDTO produto, BindingResult result) {
         if (result.hasErrors()) {

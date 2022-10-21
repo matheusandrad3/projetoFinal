@@ -1,9 +1,9 @@
 package app.exeception;
 
+import org.springframework.http.HttpStatus;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import org.springframework.http.HttpStatus;
 
 public class AraujoExeception extends RuntimeException {
 

@@ -15,10 +15,12 @@ public class ItemPedido {
     private Produto produto;
     @ManyToOne
     @JoinColumn(name = "id_pedidos")
-    private Pedidos pedidos;
+    private Pedido pedidos;
 
     private Integer quantidade = 0;
+
     private Double valorUnitario = 0.0;
+
     private Double valorTotal = 0.0;
 
     public Long getId() {
@@ -36,7 +38,6 @@ public class ItemPedido {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-
 
     public Integer getQuantidade() {
         return quantidade;
@@ -62,11 +63,11 @@ public class ItemPedido {
         this.valorTotal = valorTotal;
     }
 
-    public Pedidos getPedidos() {
+    public Pedido getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(Pedidos pedidos) {
+    public void setPedidos(Pedido pedidos) {
         this.pedidos = pedidos;
     }
 }
