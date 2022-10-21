@@ -10,7 +10,7 @@ import app.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,7 @@ public class PedidosService {
     private ProdutoRepository produtoRepository;
     @Autowired
     private PedidosRepository pedidosRepository;
+
     private List<ItemPedido> itensCompras = new ArrayList<ItemPedido>();
     private Pedidos compra = new Pedidos();
 
@@ -63,20 +64,23 @@ public class PedidosService {
 
     public void alterarQuantidade(Long id, Integer acao) {
         List<ItemPedido> itensCompras = getItensCompras();
+        double valorTotal = 0.0;
         for (ItemPedido itens : itensCompras) {
             if (itens.getProduto().getId().equals(id)) {
                 if (acao.equals(1)) {
                     itens.setQuantidade(itens.getQuantidade() + 1);
                     itens.setValorTotal(0.);
-                    itens.setValorTotal(itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario()));
+                    valorTotal = itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario());
+                    itens.setValorTotal(converterValor(valorTotal));
 
                 } else if (acao == 0) {
                     itens.setQuantidade(itens.getQuantidade() - 1);
                     if (itens.getQuantidade() == 0) {
                         removerCarrinho(id);
                     }
-                    itens.setValorTotal(0.);
-                    itens.setValorTotal(itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario()));
+                    itens.setValorTotal(0.0);
+                    valorTotal = itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario());
+                    itens.setValorTotal(converterValor(valorTotal));
                 }
                 break;
             }
@@ -91,8 +95,9 @@ public class PedidosService {
         for (ItemPedido itens : itensCompras) {
             if (itens.getProduto().getId().equals(produto1.getId())) {
                 itens.setQuantidade(itens.getQuantidade() + 1);
-                itens.setValorTotal(0.);
-                itens.setValorTotal(itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario()));
+                itens.setValorTotal(0.0);
+                double valorTotal = itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario());
+                itens.setValorTotal(converterValor(valorTotal));
                 controle = 1;
                 break;
             }
@@ -102,7 +107,8 @@ public class PedidosService {
             item.setProduto(produto1);
             item.setValorUnitario((double) produto1.getValorVenda());
             item.setQuantidade(item.getQuantidade() + 1);
-            item.setValorTotal(item.getValorTotal() + (item.getQuantidade() * item.getValorUnitario()));
+            double valorTotal = item.getValorTotal() + (item.getQuantidade() * item.getValorUnitario());
+            item.setValorTotal(converterValor(valorTotal));
             itensCompras.add(item);
         }
     }
@@ -123,6 +129,15 @@ public class PedidosService {
         setItensCompras(new ArrayList<>());
         setCompra(new Pedidos());
     }
+
+    private Double converterValor(Double valor) {
+        DecimalFormat fmt = new DecimalFormat("0.00");
+        String string = fmt.format(valor);
+        String[] part = string.split("[,]");
+        String valorConvertido = part[0] + "." + part[1];
+        return Double.parseDouble(valorConvertido);
+    }
+
 
     public List<ItemPedido> getItensCompras() {
         return itensCompras;
