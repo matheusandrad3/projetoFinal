@@ -122,6 +122,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mb-2">
+                    <nav class="navbar navbar-light bg-light col-12 align-items-center justify-content-center">
+                        <form class="form-inline d-flex flex-row justify-content-around" th:action="@{produtos/pesquisarnome}" th:method="POST" >
+                            <input name="nomepesquisa" class="form-control mr-sm-2" type="search" placeholder="Pesquise por nome" aria-label="Pesquisar">
+                            <button class="btn btn-outline-primary my-2 my-sm-0" style="margin-left:25px" type="submit">Pesquisar</button>
+                        </form>
+                    </nav>
+                </div>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5"  th:each="produto : ${listaProdutos}">
                         <div class="card h-100">
@@ -138,8 +146,7 @@
                                     <h5 class="fw-bolder" th:text="${produto.nome}"></h5>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"
-                                        ></div>
+                                        <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
