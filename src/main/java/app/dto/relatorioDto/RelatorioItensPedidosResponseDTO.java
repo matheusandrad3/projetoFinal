@@ -4,6 +4,17 @@ import java.time.LocalDate;
 
 public class RelatorioItensPedidosResponseDTO {
 
+    public RelatorioItensPedidosResponseDTO() {
+    }
+
+    public RelatorioItensPedidosResponseDTO(String nome, LocalDate dataCompra, Double valorUnitario, Integer quantidade, Double valorTotal) {
+        this.nome = nome;
+        this.dataCompra = dataCompra.toString();
+        this.valorUnitario = valorUnitario;
+        this.quantidade = quantidade.doubleValue();
+        this.valorTotal = valorTotal;
+    }
+
     private String nome;
 
     private String dataCompra;
