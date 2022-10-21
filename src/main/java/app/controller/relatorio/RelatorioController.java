@@ -4,10 +4,9 @@ import app.dto.relatorioDto.EstoqueResponseDTO;
 import app.dto.relatorioDto.FiltroDataRequestDTO;
 import app.dto.relatorioDto.RelatorioItensPedidosResponseDTO;
 import app.model.Produto;
-import app.model.RelatorioItensPedidos;
+import app.repository.ItemPedidoRepository;
 import app.repository.PedidosRepository;
 import app.repository.ProdutoRepository;
-import app.repository.RelatorioItensPedidoRepository;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,14 +39,13 @@ public class RelatorioController {
     private PedidosRepository pedidoRepository;
 
     @Autowired
-    private RelatorioItensPedidoRepository relatorioItensPedidoRepository;
+    private ItemPedidoRepository itemPedidoRepository;
 
     @GetMapping("/administrativo/vendas")
     public ModelAndView relatoriosVendas() {
         FiltroDataRequestDTO dto = new FiltroDataRequestDTO();
         ModelAndView model = new ModelAndView("/administrativo/relatorio/vendas");
         model.addObject("dto", dto);
-
         return model;
     }
 
@@ -93,17 +92,8 @@ public class RelatorioController {
 
     @PostMapping("/pedidos")
     public ResponseEntity<byte[]> gerarRelatorioPedidos(FiltroDataRequestDTO dto) throws JRException, FileNotFoundException {
-        List<RelatorioItensPedidosResponseDTO> lista = new ArrayList<>();
+        List<RelatorioItensPedidosResponseDTO> lista = itemPedidoRepository.recuperarItensPedido(LocalDate.parse(dto.getDataInicio()), LocalDate.parse(dto.getDataFinal()));
         try {
-            for (RelatorioItensPedidos r : relatorioItensPedidoRepository.findAllPedidos(dto.getDataInicio(), dto.getDataFinal())) {
-                RelatorioItensPedidosResponseDTO responseDTO = new RelatorioItensPedidosResponseDTO();
-                responseDTO.setNome(r.getNome());
-                responseDTO.setDataCompra(r.getDataCompra().toString());
-                responseDTO.setValorUnitario(r.getValorUnitario());
-                responseDTO.setValorTotal(r.getValorTotal());
-                responseDTO.setQuantidade(r.getQuantidade());
-                lista.add(responseDTO);
-            }
 
             Map<String, Object> empParams = new HashMap<String, Object>();
             empParams.put("Araujo", "app");
