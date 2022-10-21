@@ -49,6 +49,7 @@ public class ProdutoController {
         model.addObject("listaProdutos", repository.findByCategoria("nossas marcas"));
         return model;
     }
+
     @GetMapping("/produtos/beleza")
     public ModelAndView buscarPorBeleza() {
         ModelAndView model = new ModelAndView("/cliente/produtos/beleza");
@@ -62,6 +63,7 @@ public class ProdutoController {
         model.addObject("listaProdutos", repository.findByCategoria("mais nossas marcas"));
         return model;
     }
+
     @GetMapping("/produtos/destaque")
     public ModelAndView buscarPorDestaque() {
         ModelAndView model = new ModelAndView("/cliente/produtos/destaque");

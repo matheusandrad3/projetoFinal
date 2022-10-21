@@ -3,6 +3,7 @@ package app.dto.clienteDto;
 public class ClienteLoginRequestDTO {
 
     private String email;
+
     private String senha;
 
     public String getEmail() {

@@ -1,8 +1,9 @@
-package app.dto.itensPedidosDto;
+package app.dto.itemPedidoDto;
 
-public class ItensPedidosRequestDTO {
+public class ItemPedidoRequestDTO {
 
     private Long codProduto;
+
     private Integer quantidade;
 
     public Long getId_produto() {
@@ -12,7 +13,6 @@ public class ItensPedidosRequestDTO {
     public void setId_produto(Long id_produto) {
         this.codProduto = id_produto;
     }
-
 
     public Integer getQuantidade() {
         return quantidade;

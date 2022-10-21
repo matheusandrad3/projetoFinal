@@ -1,32 +1,29 @@
-package app.model;
+package app.dto.relatorioDto;
 
-import javax.annotation.sql.DataSourceDefinition;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.LocalDate;
-import java.util.Date;
 
+public class RelatorioItemPedidoResponseDTO {
 
-public class Teste {
+    public RelatorioItemPedidoResponseDTO() {
+    }
 
-    private String nome;
-
-    private LocalDate dataCompra;
-
-    private Double valorUnitario;
-    private Integer quantidade;
-
-    private Double valorTotal;
-
-    public Teste(String nome, LocalDate dataCompra, Double valorUnitario, Integer quantidade, Double valorTotal) {
+    public RelatorioItemPedidoResponseDTO(String nome, LocalDate dataCompra, Double valorUnitario, Integer quantidade, Double valorTotal) {
         this.nome = nome;
-        this.dataCompra = dataCompra;
+        this.dataCompra = dataCompra.toString();
         this.valorUnitario = valorUnitario;
         this.quantidade = quantidade;
         this.valorTotal = valorTotal;
     }
+
+    private String nome;
+
+    private String dataCompra;
+
+    private Double valorUnitario;
+
+    private Integer quantidade;
+
+    private Double valorTotal;
 
     public String getNome() {
         return nome;
@@ -36,11 +33,11 @@ public class Teste {
         this.nome = nome;
     }
 
-    public LocalDate getDataCompra() {
+    public String getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(LocalDate dataCompra) {
+    public void setDataCompra(String dataCompra) {
         this.dataCompra = dataCompra;
     }
 

@@ -1,9 +1,5 @@
 package app.service;
 
-import app.exeception.AraujoExeception;
-import app.model.Cliente;
-import app.model.ItemPedido;
-import app.model.Pedidos;
 import app.model.Produto;
 import app.model.enums.DisponibilidadeProduto;
 import app.repository.ProdutoRepository;

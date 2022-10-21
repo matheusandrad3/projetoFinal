@@ -2,7 +2,6 @@ package app.controller.cliente;
 
 import app.dto.clienteDto.ClienteRequestDTO;
 import app.mapper.ClienteMapper;
-import app.model.Cliente;
 import app.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
