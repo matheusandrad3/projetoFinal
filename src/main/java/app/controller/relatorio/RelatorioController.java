@@ -1,10 +1,10 @@
 package app.controller.relatorio;
 
+import app.dto.relatorioDto.EstoqueResponseDTO;
 import app.dto.relatorioDto.FiltroDataRequestDTO;
+import app.dto.relatorioDto.RelatorioItensPedidosResponseDTO;
 import app.model.Produto;
-import app.model.Teste;
-import app.relatorio.Estoque;
-import app.relatorio.RelatorioItensPedidos;
+import app.repository.ItemPedidoRepository;
 import app.repository.PedidosRepository;
 import app.repository.ProdutoRepository;
 import net.sf.jasperreports.engine.*;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,23 +38,24 @@ public class RelatorioController {
     @Autowired
     private PedidosRepository pedidoRepository;
 
+    @Autowired
+    private ItemPedidoRepository itemPedidoRepository;
 
     @GetMapping("/administrativo/vendas")
-    public ModelAndView relatoriosVendas(){
+    public ModelAndView relatoriosVendas() {
         FiltroDataRequestDTO dto = new FiltroDataRequestDTO();
         ModelAndView model = new ModelAndView("/administrativo/relatorio/vendas");
         model.addObject("dto", dto);
-
         return model;
     }
 
     @GetMapping("/produtos")
     public ResponseEntity<byte[]> gerarRelatorio() throws JRException, FileNotFoundException {
-        List<Estoque> lista = new ArrayList<>();
+        List<EstoqueResponseDTO> lista = new ArrayList<>();
         try {
 
             for (Produto p : produtoRepository.findAll()) {
-                Estoque e = new Estoque();
+                EstoqueResponseDTO e = new EstoqueResponseDTO();
                 e.setNome(p.getNome());
                 e.setValorUnitario(p.getValorVenda());
                 e.setQuantidade(p.getQuantidadeEstoque());
@@ -90,14 +92,9 @@ public class RelatorioController {
 
     @PostMapping("/pedidos")
     public ResponseEntity<byte[]> gerarRelatorioPedidos(FiltroDataRequestDTO dto) throws JRException, FileNotFoundException {
-        List<RelatorioItensPedidos> lista = new ArrayList<>();
+        List<RelatorioItensPedidosResponseDTO> lista = itemPedidoRepository.recuperarItensPedido(LocalDate.parse(dto.getDataInicio()), LocalDate.parse(dto.getDataFinal()));
         try {
 
-            for (Teste p : pedidoRepository.findAllPedidos(dto.getDataInicio(), dto.getDataFinal())) {
-                RelatorioItensPedidos i = new RelatorioItensPedidos();
-                i.setNome(p.getNome());
-                lista.add(i);
-            }
             Map<String, Object> empParams = new HashMap<String, Object>();
             empParams.put("Araujo", "app");
             empParams.put("RelatorioPedidos", new JRBeanCollectionDataSource(lista));
@@ -107,7 +104,7 @@ public class RelatorioController {
                             (
                                     JasperCompileManager.compileReport(
                                             ResourceUtils
-                                                    .getFile("classpath:ItensPedidos.jrxml")
+                                                    .getFile("classpath:RelatorioVendas.jrxml")
                                                     .getAbsolutePath()) // path of the jasper report
                                     , empParams // dynamic parameters
                                     , new JRBeanCollectionDataSource(lista)
@@ -116,7 +113,7 @@ public class RelatorioController {
             HttpHeaders headers = new HttpHeaders();
             //set the PDF format
             headers.setContentType(MediaType.APPLICATION_PDF);
-            headers.setContentDispositionFormData("filename", "ItensPedidos.pdf");
+            headers.setContentDispositionFormData("filename", "RelatorioVendas.pdf");
             //create the report in PDF format
             return new ResponseEntity<byte[]>
                     (JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);

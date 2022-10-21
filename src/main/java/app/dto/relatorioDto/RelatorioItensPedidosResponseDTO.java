@@ -1,12 +1,23 @@
-package app.relatorio;
+package app.dto.relatorioDto;
 
 import java.time.LocalDate;
 
-public class RelatorioItensPedidos {
+public class RelatorioItensPedidosResponseDTO {
+
+    public RelatorioItensPedidosResponseDTO() {
+    }
+
+    public RelatorioItensPedidosResponseDTO(String nome, LocalDate dataCompra, Double valorUnitario, Integer quantidade, Double valorTotal) {
+        this.nome = nome;
+        this.dataCompra = dataCompra.toString();
+        this.valorUnitario = valorUnitario;
+        this.quantidade = quantidade.doubleValue();
+        this.valorTotal = valorTotal;
+    }
 
     private String nome;
 
-    private LocalDate dataCompra;
+    private String dataCompra;
 
     private Double valorUnitario;
 
@@ -22,11 +33,11 @@ public class RelatorioItensPedidos {
         this.nome = nome;
     }
 
-    public LocalDate getDataCompra() {
+    public String getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(LocalDate dataCompra) {
+    public void setDataCompra(String dataCompra) {
         this.dataCompra = dataCompra;
     }
 

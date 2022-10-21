@@ -21,7 +21,6 @@ public class ClienteController {
     @Autowired
     private ClienteMapper mapper;
 
-
     @GetMapping("/cadastro")
     public ModelAndView cadastro(ClienteRequestDTO cliente) {
         ModelAndView model = new ModelAndView("/cliente/cadastro");
@@ -41,7 +40,6 @@ public class ClienteController {
         service.cadastarCliente(mapper.toCliente(dto));
         ModelAndView model = new ModelAndView("/cliente/login");
         return model;
-
     }
 }
 

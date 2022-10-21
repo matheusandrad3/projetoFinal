@@ -1,6 +1,6 @@
-package app.relatorio;
+package app.dto.relatorioDto;
 
-public class Estoque {
+public class EstoqueResponseDTO {
 
     private String nome;
 
