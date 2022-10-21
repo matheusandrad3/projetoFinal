@@ -1,177 +1,266 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <link href="">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/image/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/image/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
 
-  <title>Grupo5 - Home</title>
+    <title>Grupo5 - Home</title>
 
-  <style>
+    <style>
     body {
       font-family: 'Roboto', sans-serif;
     }
-  </style>
+    </style>
 
 </head>
 <body>
 <nav th:replace="components/navbar :: nav_bar"></nav>
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img src="../static/image/banner-desk--PANETONE-final.gif" th:src="@{/image/banner-desk--PANETONE-final.gif}" class="d-block w-100" alt="...">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-item" data-bs-interval="2000">
-      <img src="../static/image/banner-desk-CATEGORIA-HIGIENE-PESSOAL-oral-b.gif" th:src="@{/image/banner-desk-CATEGORIA-HIGIENE-PESSOAL-oral-b.gif}" class="d-block w-100" alt="...">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <img src="../static/image/banner-desk--PANETONE-final.gif"
+                 th:src="@{/image/banner-desk--PANETONE-final.gif}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="../static/image/banner-desk-CATEGORIA-HIGIENE-PESSOAL-oral-b.gif"
+                 th:src="@{/image/banner-desk-CATEGORIA-HIGIENE-PESSOAL-oral-b.gif}" class="d-block w-100" alt="...">
 
+        </div>
+        <div class="carousel-item">
+            <img src="../static/image/Banner-desktop-gold_1.gif" th:src="@{/image/Banner-desktop-gold_1.gif}"
+                 class="d-block w-100" alt="...">
+        </div>
     </div>
-    <div class="carousel-item">
-      <img src="../static/image/Banner-desktop-gold_1.gif" th:src="@{/image/Banner-desktop-gold_1.gif}" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  </button>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
 </div>
 
-<div class="card d-flex flex-row justify-content-around w-100 border border-0 mt-2 " >
-  <img src="../static/images/menu6.webp" th:src="@{/image/menu6.webp}" class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width: 150px;"  alt="..." >
-  <img src="../static/images/menu1.png" th:src="@{/image/menu1.png}" class="card-img-top  shadow-lg   mb-5 bg-body rounded" style="width: 150px;" alt="...">
-  <img src="../static/images/menu4.webp" th:src="@{/image/menu4.webp}"  class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width: 150px;" alt="...">
-  <img src="../static/images/menu3.png" th:src="@{/image/menu3.png}"  class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width: 150px;" alt="...">
-  <img src="../static/images/menu2.png" th:src="@{/image/menu2.png}"  class="card-img-top  shadow-lg  mb-5 bg-body rounded"  style="width:150px;" alt="...">
-  <img src="../static/images/menu5.png" th:src="@{/image/menu5.png}"  class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width: 150px;" alt="...">
+<div class="card d-flex flex-row justify-content-around w-100 border border-0 mt-2 ">
+    <img src="../static/images/menu6.webp" th:src="@{/image/menu6.webp}"
+         class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width: 150px;" alt="...">
+    <img src="../static/images/menu1.png" th:src="@{/image/menu1.png}"
+         class="card-img-top  shadow-lg   mb-5 bg-body rounded" style="width: 150px;" alt="...">
+    <img src="../static/images/menu4.webp" th:src="@{/image/menu4.webp}"
+         class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width: 150px;" alt="...">
+    <img src="../static/images/menu3.png" th:src="@{/image/menu3.png}"
+         class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width: 150px;" alt="...">
+    <img src="../static/images/menu2.png" th:src="@{/image/menu2.png}"
+         class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width:150px;" alt="...">
+    <img src="../static/images/menu5.png" th:src="@{/image/menu5.png}"
+         class="card-img-top  shadow-lg  mb-5 bg-body rounded" style="width: 150px;" alt="...">
 </div>
 
-<div class = "container-md container-xl bg-light pt-5 shadow ">
-  <div class = "row row-cols-2 d-flex justify-content-evenly ">
-    <div class="card mb-3  border border-0 shadow" style="width: 350px ">
-      <div class = "card-body">
-        <div class = "bg-primary bg-opacity-10 w-100">
-          <h5 class="card-title mb-5 fw-bold">Nossas Marcas</h5>
+<div class="container-md container-xl bg-light pt-5 shadow ">
+    <div class="row row-cols-2 d-flex justify-content-evenly ">
+        <div class="card mb-3  border border-0 shadow" style="width: 350px ">
+            <div class="card-body">
+                <div class="bg-primary bg-opacity-10 w-100">
+                    <h5 class="card-title mb-5 fw-bold">Nossas Marcas</h5>
+                </div>
+                <div class="container text-center" style="height: 350px">
+                    <div class="row row-cols-2">
+                        <div class="col "><img th:src="@{/image/home15.png}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Vitaminas</span></div>
+                        <div class="col "><img th:src="@{/image/home16.png}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Beleza</span></div>
+                        <div class="col "><img th:src="@{/image/home18.png}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Casa</span></div>
+                        <div class="col "><img th:src="@{/image/home17.png}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Higiene</span></div>
+                    </div>
+                </div>
+                <div><a href="/produtos/nossas" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                </div>
+            </div>
         </div>
-        <div class = "container text-center" style="height: 350px">
-          <div class="row row-cols-2">
-            <div class="col " ><img th:src="@{/image/home15.png}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Vitaminas</span></div>
-            <div class="col "><img th:src="@{/image/home16.png}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Beleza</span></div>
-            <div class="col "><img th:src="@{/image/home18.png}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Casa</span></div>
-            <div class="col "><img th:src="@{/image/home17.png}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Higiene</span></div>
-          </div>
-        </div>
-        <div><a href="/produtos/nossas" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a></div>
-      </div>
-    </div>
-    <div class="card mb-3  border border-0 shadow " style="width: 350px  ">
-      <div class = "card-body ">
-        <div class = "bg-primary bg-opacity-10 w-100">
-          <h5 class="card-title mb-5 fw-bold">Higiene</h5>
-        </div>
-        <div class = "container text-center " style=" height: 350px " >
-          <div class="row row-cols-2 ">
-             <div class="col " ><img  th:src="@{/image/home11.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Cotonete</span></div>
-            <div class="col "><img  th:src="@{/image/home12.webp}" class = "shadow-sm"  style="height: 130px"><span class="text-muted">Gillette</span></div>
-            <div class="col "><img th:src="@{/image/home13.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Desodorante</span></div>
-            <div class="col "><img th:src="@{/image/home14.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Fio Dental</span></div>
+        <div class="card mb-3  border border-0 shadow " style="width: 350px  ">
+            <div class="card-body ">
+                <div class="bg-primary bg-opacity-10 w-100">
+                    <h5 class="card-title mb-5 fw-bold">Higiene</h5>
+                </div>
+                <div class="container text-center " style=" height: 350px ">
+                    <div class="row row-cols-2 ">
+                        <div class="col "><img th:src="@{/image/home11.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Cotonete</span></div>
+                        <div class="col "><img th:src="@{/image/home12.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Gillette</span></div>
+                        <div class="col "><img th:src="@{/image/home13.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Desodorante</span></div>
+                        <div class="col "><img th:src="@{/image/home14.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Fio Dental</span></div>
 
-          </div>
+                    </div>
+                </div>
+                <div><a href="/produtos/higiene" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                </div>
+            </div>
         </div>
-        <div><a href="/produtos/higiene" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a></div>
-      </div>
-    </div>
-    <div class="card mb-3  border border-0 shadow" style="width: 350px">
-      <div class = "card-body">
-        <div class = "bg-primary bg-opacity-10 w-100">
-          <h5 class="card-title mb-5 fw-bold">Beleza</h5>
+        <div class="card mb-3  border border-0 shadow" style="width: 350px">
+            <div class="card-body">
+                <div class="bg-primary bg-opacity-10 w-100">
+                    <h5 class="card-title mb-5 fw-bold">Beleza</h5>
+                </div>
+                <div class="container text-center" style="height: 350px">
+                    <div class="row row-cols-2">
+                        <div class="col b"><img th:src="@{/image/home7.webp}" class="shadow-sm"
+                                                style="height: 130px"><span class="text-muted">Doctar Plus</span></div>
+                        <div class="col "><img th:src="@{/image/home8.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">kit Sanctio</span></div>
+                        <div class="col "><img th:src="@{/image/home9.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Creme</span></div>
+                        <div class="col "><img th:src="@{/image/home10.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Kit Protetor</span></div>
+                    </div>
+                </div>
+                <div><a href="/produtos/beleza" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                </div>
+            </div>
         </div>
-        <div class = "container text-center" style="height: 350px">
-          <div class="row row-cols-2">
-            <div class="col b" ><img th:src="@{/image/home7.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Doctar Plus</span></div>
-            <div class="col "><img th:src="@{/image/home8.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">kit Sanctio</span></div>
-            <div class="col "><img  th:src="@{/image/home9.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Creme</span></div>
-            <div class="col "><img th:src="@{/image/home10.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Kit Protetor</span></div>
-          </div>
+        <div class="card mb-3  border border-0 shadow" style="width: 350px">
+            <div class="card-body">
+                <div class="bg-primary bg-opacity-10 w-100">
+                    <h5 class="card-title mb-5 fw-bold">+ Nossas Marcas</h5>
+                </div>
+                <div class="container text-center" style="height: 350px">
+                    <div class="row row-cols-2">
+                        <div class="col "><img th:src="@{/image/home19.webp}" class="shadow-sm"
+                                               style="height: 130px; width: 129px"> <span
+                                class="text-muted">Lanche</span></div>
+                        <div class="col "><img th:src="@{/image/home20.png}" class="shadow-sm"
+                                               style="height: 130px; width: 129px"><span
+                                class="text-muted">Cuidados</span></div>
+                        <div class="col "><img th:src="@{/image/home21.png} " class="shadow-sm"
+                                               style="height: 130px; width: 129px"><span class="text-muted">Pet</span>
+                        </div>
+                        <div class="col "><img th:src="@{/image/home22.png}" class="shadow-sm"
+                                               style="height: 130px; width: 129px"><span class="text-muted">Bags</span>
+                        </div>
+                    </div>
+                </div>
+                <div><a href="/produtos/maisnossas" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                </div>
+            </div>
         </div>
-        <div><a href="/produtos/beleza" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a></div>
-      </div>
-    </div>
-    <div class="card mb-3  border border-0 shadow" style="width: 350px">
-      <div class = "card-body">
-        <div class = "bg-primary bg-opacity-10 w-100">
-          <h5 class="card-title mb-5 fw-bold">+ Nossas Marcas</h5>
+        <div class="card mb-3  border border-0 shadow" style="width: 350px">
+            <div class="card-body ">
+                <div class="bg-primary bg-opacity-10 w-100">
+                    <h5 class="card-title mb-5 fw-bold">Cuidado Saúde</h5>
+                </div>
+                <div class="container text-center" style="height: 350px">
+                    <div class="row row-cols-2">
+                        <div class="col "><img th:src="@{/image/home3.webp}" class="shadow-sm" style="height: 130px">
+                            <span class="text-muted">Fralda</span></div>
+                        <div class="col "><img th:src="@{/image/home4.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Fórmula</span></div>
+                        <div class="col "><img th:src="@{/image/home5.webp} " class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Bepantol</span></div>
+                        <div class="col "><img th:src="@{/image/home6.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Ninho 3+</span></div>
+                    </div>
+                </div>
+                <div><a href="/produtos/saude" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                </div>
+            </div>
         </div>
-        <div class = "container text-center" style="height: 350px">
-          <div class="row row-cols-2">
-            <div class="col " ><img th:src="@{/image/home19.webp}" class = "shadow-sm" style="height: 130px; width: 129px"> <span class="text-muted">Lanche</span></div>
-            <div class="col "><img  th:src="@{/image/home20.png}" class = "shadow-sm" style="height: 130px; width: 129px"><span class="text-muted">Cuidados</span></div>
-            <div class="col "><img th:src="@{/image/home21.png} " class = "shadow-sm" style="height: 130px; width: 129px"><span class="text-muted">Pet</span></div>
-            <div class="col "><img th:src="@{/image/home22.png}" class = "shadow-sm"  style="height: 130px; width: 129px"><span class="text-muted">Bags</span></div>
-          </div>
-        </div>
-        <div><a href="/produtos/maisnossas" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a></div>
-      </div>
-    </div>
-    <div class="card mb-3  border border-0 shadow" style="width: 350px">
-      <div class = "card-body ">
-        <div class = "bg-primary bg-opacity-10 w-100">
-          <h5 class="card-title mb-5 fw-bold">Cuidado Saúde</h5>
-        </div>
-        <div class = "container text-center" style="height: 350px">
-          <div class="row row-cols-2">
-            <div class="col " ><img th:src="@{/image/home3.webp}" class = "shadow-sm" style="height: 130px"> <span class="text-muted">Fralda</span></div>
-            <div class="col "><img th:src="@{/image/home4.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Fórmula</span></div>
-            <div class="col "><img th:src="@{/image/home5.webp} " class = "shadow-sm" style="height: 130px"><span class="text-muted">Bepantol</span></div>
-            <div class="col "><img th:src="@{/image/home6.webp}" class = "shadow-sm"  style="height: 130px"><span class="text-muted">Ninho 3+</span></div>
-          </div>
-        </div>
-        <div><a href="/produtos/saude" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a></div>
-      </div>
-    </div>
-    <div class="card mb-3  border border-0 shadow" style="width: 350px">
-      <div class = "card-body">
-        <div class = "bg-primary bg-opacity-10 w-100">
-          <h5 class="card-title mb-5 fw-bold">Destaques Semana</h5>
-        </div>
-        <div class = "container text-center" style="height: 350px">
-          <div class="row row-cols-2">
-            <div class="col " ><img th:src="@{/image/home1.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Dorflex</span></div>
-            <div class="col "><img src="../static/image/estoque2.webp " th:src="@{/image/estoque2.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Escova Colgate</span></div>
-            <div class="col "><img th:src="@{/image/home2.webp}" class = "shadow-sm" style="height: 130px"><span class="text-muted">Expec Xarope</span></div>
-            <div class="col "><img src="../static/image/estoque4.webp" th:src="@{/image/estoque4.webp}" class = "shadow-sm"  style="height: 130px"><span class="text-muted">Kit Protetor</span></div>
+        <div class="card mb-3  border border-0 shadow" style="width: 350px">
+            <div class="card-body">
+                <div class="bg-primary bg-opacity-10 w-100">
+                    <h5 class="card-title mb-5 fw-bold">Destaques Semana</h5>
+                </div>
+                <div class="container text-center" style="height: 350px">
+                    <div class="row row-cols-2">
+                        <div class="col "><img th:src="@{/image/home1.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Dorflex</span></div>
+                        <div class="col "><img src="../static/image/estoque2.webp " th:src="@{/image/estoque2.webp}"
+                                               class="shadow-sm" style="height: 130px"><span class="text-muted">Escova Colgate</span>
+                        </div>
+                        <div class="col "><img th:src="@{/image/home2.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Expec Xarope</span></div>
+                        <div class="col "><img src="../static/image/estoque4.webp" th:src="@{/image/estoque4.webp}"
+                                               class="shadow-sm" style="height: 130px"><span class="text-muted">Kit Protetor</span>
+                        </div>
 
-          </div>
+                    </div>
+                </div>
+                <div><a href="/produtos/destaque" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                </div>
+            </div>
         </div>
-        <div><a href="/produtos/destaque" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a></div>
-      </div>
     </div>
-  </div>
 </div>
 
 <footer class="py-5 bg-dark">
-  <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Grupo 5 2022</p></div>
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Grupo 5 2022</p></div>
 </footer>
+<script th:inline="javascript">
+function mouseOverH() {
+  document.getElementById("tagH").style.fontSize= "0px";
+  document.getElementById("tagHi").style.fontSize= "20px";
+}
+function mouseOutH(){
+    document.getElementById("tagH").style.fontSize= "14px";
+    document.getElementById("tagHi").style.fontSize= "14px";
+}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+function mouseOverP() {
+   document.getElementById("tagP").style.fontSize= "0px";
+  document.getElementById("tagPi").style.fontSize= "20px";
+}
+function mouseOutP(){
+        document.getElementById("tagP").style.fontSize= "14px";
+    document.getElementById("tagPi").style.fontSize= "14px";
+}
+
+function mouseOverC() {
+   document.getElementById("tagC").style.fontSize= "0px";
+  document.getElementById("tagCi").style.fontSize= "20px";
+}
+function mouseOutC(){
+        document.getElementById("tagC").style.fontSize= "14px";
+    document.getElementById("tagCi").style.fontSize= "14px";
+}
+
+function mouseOverCa() {
+   document.getElementById("tagCa").style.fontSize= "0px";
+  document.getElementById("tagCai").style.fontSize= "20px";
+}
+function mouseOutCa(){
+        document.getElementById("tagCa").style.fontSize= "14px";
+    document.getElementById("tagCai").style.fontSize= "14px";
+}
+
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
 </body>
 </html>
