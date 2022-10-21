@@ -1,12 +1,16 @@
-package app.relatorio;
+package app.dto.relatorioDto;
 
-public class Estoque {
+import java.time.LocalDate;
+
+public class RelatorioItensPedidosResponseDTO {
 
     private String nome;
 
-    private Integer quantidade;
+    private String dataCompra;
 
     private Double valorUnitario;
+
+    private Double quantidade;
 
     private Double valorTotal;
 
@@ -18,12 +22,12 @@ public class Estoque {
         this.nome = nome;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public String getDataCompra() {
+        return dataCompra;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setDataCompra(String dataCompra) {
+        this.dataCompra = dataCompra;
     }
 
     public Double getValorUnitario() {
@@ -32,6 +36,14 @@ public class Estoque {
 
     public void setValorUnitario(Double valorUnitario) {
         this.valorUnitario = valorUnitario;
+    }
+
+    public Double getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Double quantidade) {
+        this.quantidade = quantidade;
     }
 
     public Double getValorTotal() {
