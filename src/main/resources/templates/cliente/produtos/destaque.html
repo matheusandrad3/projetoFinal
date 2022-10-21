@@ -213,9 +213,9 @@
                                                 <div class="card">
                                                     <img th:src="${produto.urlImagem}" class="card-img-top col align-self-center" style="width:200px" alt="..."/>
                                                     <div class="card-body ">
-                                                        <form th:action="@{cliente/carrinho/comprar/{id}(id=${produto.id})}" th:method="POST">
+                                                        <form th:action="@{/cliente/carrinho/comprar/{id}(id=${produto.id})}" th:method="POST">
                                                             <input type="hidden" name = "id" th:value ="${produto.id}" />
-                                                            <button type="submit" th:onclick="aumentaCarrinho()" class="btn btn-outline-danger mt-2" > Add</button>
+                                                            <button type="submit" class="btn btn-outline-danger mt-2" > Add</button>
                                                         </form>
                                                     </div>
                                                 </div>
