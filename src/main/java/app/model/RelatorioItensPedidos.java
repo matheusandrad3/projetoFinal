@@ -1,9 +1,16 @@
-package app.relatorio;
+package app.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "relatorio")
 public class RelatorioItensPedidos {
 
+    @Id
+    private String id;
     private String nome;
 
     private LocalDate dataCompra;
@@ -52,5 +59,13 @@ public class RelatorioItensPedidos {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
