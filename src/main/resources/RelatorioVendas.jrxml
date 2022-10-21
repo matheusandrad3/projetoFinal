@@ -9,7 +9,7 @@
 	<field name="nome" class="java.lang.String"/>
 	<field name="dataCompra" class="java.lang.String"/>
 	<field name="valorUnitario" class="java.lang.Double"/>
-	<field name="quantidade" class="java.lang.Double"/>
+	<field name="quantidade" class="java.lang.Integer"/>
 	<field name="valorTotal" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -107,7 +107,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="28" splitType="Stretch">
+		<band height="25" splitType="Stretch">
 			<rectangle>
 				<reportElement x="-20" y="1" width="595" height="23" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(111, 186, 247, 0.3882353)" uuid="34e6a865-0099-409d-86ac-0a7e7c32a451"/>
 			</rectangle>
@@ -132,19 +132,19 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{valorUnitario}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="337" y="1" width="119" height="23" uuid="814f62f9-ffa0-4414-865f-f368f29b0893">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec1cec89-0c1c-4182-b38d-d179321fdcea"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
-			</textField>
 			<textField pattern="¤#,##0.00;¤-#,##0.00">
 				<reportElement x="456" y="1" width="119" height="23" uuid="446511dd-2f7e-4eb3-9bd7-3b01d04d2b7a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0bdda493-3a0c-4f49-a331-e008315167c6"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{valorTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="0" width="114" height="24" uuid="1f4a0e22-e141-43da-82db-9d9d8851d36f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8ce12300-bc5d-4cce-a653-033fbb689b15"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

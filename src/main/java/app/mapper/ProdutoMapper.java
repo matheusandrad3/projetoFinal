@@ -10,5 +10,4 @@ public interface ProdutoMapper {
     Produto toProduto(ProdutoRequestDTO dto);
 
     ProdutoRequestDTO toProdutoRequestDTO(Produto produto);
-
 }

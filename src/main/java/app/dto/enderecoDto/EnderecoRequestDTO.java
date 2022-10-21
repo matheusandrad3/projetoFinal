@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 public class EnderecoRequestDTO {
 
     private Long id;
+
     @Column(name = "CEP")
     @Size(min = 9, max = 9, message = "O CEP deve estar no formato 99999-999")
     @NotBlank(message = "O cep não pode ser nulo ou vazio!")
@@ -32,7 +33,6 @@ public class EnderecoRequestDTO {
     @Column(name = "UF")
     @Size(max = 2, min = 2, message = "A UF deve conter no máximo 2 caracteres")
     private UnidadeFederativa uf;
-
 
     @Size(min = 1, max = 10, message = "O numero deve ter no mínimo 1 e no máximo 10 caracteres!")
     @NotBlank(message = "O número não pode ser nulo ou vazio!")
@@ -106,5 +106,4 @@ public class EnderecoRequestDTO {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
-
 }
