@@ -17,4 +17,6 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     @Query("SELECT p.quantidadeEstoque FROM Produto p WHERE p.id = :id")
     Integer getQuantidadeEstoqueById(Long id);
 
+    @Query("SELECT p FROM Produto p WHERE p.disponibilidade = 'DISPONIVEL'")
+    List<Produto> findAllDisponivel();
 }
