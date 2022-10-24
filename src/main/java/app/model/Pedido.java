@@ -1,5 +1,8 @@
 package app.model;
 
+import app.model.enums.DisponibilidadeProduto;
+import app.model.enums.StatusPedido;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -22,7 +25,11 @@ public class Pedido {
 
     private String formaPagmento;
 
-    private Double valorTotal = 0.;
+    private Double valorTotal = 0.0;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "StatusPedido")
+    private StatusPedido statusPedido;
 
     public Long getId() {
         return id;
@@ -70,5 +77,13 @@ public class Pedido {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public StatusPedido getStatusPedido() {
+        return statusPedido;
+    }
+
+    public void setStatusPedido(StatusPedido statusPedido) {
+        this.statusPedido = statusPedido;
     }
 }
