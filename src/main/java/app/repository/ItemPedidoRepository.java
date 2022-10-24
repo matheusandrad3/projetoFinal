@@ -14,6 +14,7 @@ public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long> {
             "(ip.produto.nome, ip.pedidos.dataCompra, ip.valorUnitario, ip.quantidade, ip.valorTotal) " +
             "from ItemPedido ip where ip.pedidos.dataCompra BETWEEN :start AND :end " +
             "AND ip.pedidos.statusPedido = 'CONCLUIDO' order by ip.pedidos.id desc")
+
     List<RelatorioItemPedidoResponseDTO> recuperarItensPedido(LocalDate start, LocalDate end);
 
     @Query("from ItemPedido ip where ip.pedidos.id = :id and ip.produto.disponibilidade = 'DISPONIVEL'")
