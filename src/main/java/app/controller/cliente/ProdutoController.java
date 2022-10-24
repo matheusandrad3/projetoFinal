@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @RestController
 @RequestMapping
 public class ProdutoController {
@@ -24,7 +26,7 @@ public class ProdutoController {
     @GetMapping("/produtos")
     public ModelAndView index() {
         ModelAndView model = new ModelAndView("/index");
-        model.addObject("listaProdutos", service.listarProdutos());
+        model.addObject("listaProdutos", service.listarProdutosDisponivel());
         return model;
     }
 
@@ -72,6 +74,7 @@ public class ProdutoController {
     @PostMapping("/produtos/pesquisarnome")
     public ModelAndView buscarPorNome(@RequestParam("nomepesquisa") String nomepesquisa) {
         ModelAndView model = new ModelAndView("/cliente/produtos/nome");
+        List<Produto> list = repository.findByName(nomepesquisa);
         model.addObject("listaProdutos", repository.findByName(nomepesquisa));
         model.addObject("listaProdutobj", new Produto());
         return model;
