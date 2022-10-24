@@ -8,11 +8,12 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-    @Query("select p from Produto p where p.categoria = :categoria and p.disponibilidade = 'DISPONIVEL'")
+    @Query("select p from Produto p where p.categoria = :categoria and p.disponibilidade ='DISPONIVEL'")
     List<Produto> findByCategoria(@Param("categoria") String categoria);
 
-    @Query(value="select * from Produto u where u.disponibilidade != 'INDISPONIVEL' and  u.nome like %:keyword% or u.categoria like %:keyword%", nativeQuery=true)
+    @Query(value = "select * from produto where (nome like :keyword% or categoria like :keyword% or marca like :keyword%) and disponibilidade = 'DISPONIVEL'",nativeQuery=true)
     List<Produto> findByName(@Param("keyword") String nome);
+
 
     @Query("SELECT p.quantidadeEstoque FROM Produto p WHERE p.id = :id")
     Integer getQuantidadeEstoqueById(Long id);
