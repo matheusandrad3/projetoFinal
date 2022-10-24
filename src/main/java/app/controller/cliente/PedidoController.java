@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,9 +26,10 @@ public class PedidoController {
     public ModelAndView chamarCarrinho() {
         ModelAndView model = new ModelAndView("/cliente/carrinho");
         Cliente cliente = clienteService.bucarUsuario();
-        List<ItemPedido> itensCompras = pedidoService.getItensCompras();
+        Pedido pedido = pedidoService.buscarPedido(cliente);
+        List<ItemPedido> itensCompras = pedidoService.listaPedido(pedido);
         Pedido compra = new Pedido();
-        compra.setValorTotal(pedidoService.calcularTotalPedidos());
+        compra.setValorTotal(pedidoService.calcularTotalPedidos(itensCompras, pedido));
         model.addObject("compra", compra);
         model.addObject("listaItens", itensCompras);
         model.addObject("cliente", cliente);
@@ -40,24 +40,25 @@ public class PedidoController {
     public ModelAndView finalizarCompra(String formaPagmento) {
         ModelAndView model = new ModelAndView("/cliente/finalizarCompra");
         Cliente cliente = clienteService.bucarUsuario();
-        Pedido compra = new Pedido();
-        List<ItemPedido> itensCompras = pedidoService.getItensCompras();
-
-        model.addObject("compra", compra);
+        Pedido pedido = pedidoService.buscarPedido(cliente);
+        List<ItemPedido> itensCompras = pedidoService.listaPedido(pedido);
+        model.addObject("compra", pedido);
         model.addObject("listaItens", itensCompras);
         model.addObject("cliente", cliente);
 
-        if(!pedidoService.finalizarCompra(cliente, compra, itensCompras, formaPagmento)){
+        if(!pedidoService.finalizarCompra(cliente, pedido, itensCompras, formaPagmento)){
             return chamarCarrinho();
         };
 
-        pedidoService.setItensCompras(new ArrayList<>());
-        pedidoService.setCompra(new Pedido());
         return model;
     }
 
     @PostMapping("/comprar/{id}")
     public String addCarrinho(@PathVariable Long id) {
+        Cliente cliente = clienteService.bucarUsuario();
+        if (cliente == null) {
+            return "/cliente/login";
+        }
         pedidoService.addCarrinho(id);
         return "redirect:/produtos";
     }
@@ -70,7 +71,9 @@ public class PedidoController {
 
     @DeleteMapping("/remover/{id}")
     public String removerCarrinho(@PathVariable Long id) {
-        pedidoService.removerCarrinho(id);
+        Cliente cliente = clienteService.bucarUsuario();
+        Pedido pedido = pedidoService.buscarPedido(cliente);
+        pedidoService.removerCarrinho(id, pedido);
         return "redirect:/cliente/carrinho";
     }
 }
