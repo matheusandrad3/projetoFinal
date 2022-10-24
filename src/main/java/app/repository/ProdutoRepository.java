@@ -14,7 +14,6 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     @Query(value = "select * from produto where (nome like :keyword% or categoria like :keyword% or marca like :keyword%) and disponibilidade = 'DISPONIVEL'",nativeQuery=true)
     List<Produto> findByName(@Param("keyword") String nome);
 
-
     @Query("SELECT p.quantidadeEstoque FROM Produto p WHERE p.id = :id")
     Integer getQuantidadeEstoqueById(Long id);
 

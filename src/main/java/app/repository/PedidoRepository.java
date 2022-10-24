@@ -15,7 +15,6 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
     @Query("select p from Pedido p where p.transacao = :transacao and  p.statusPedido = 'PROCESSANDO'")
     Pedido getByTransacao(Transacao transacao);
-
     @Query("from Pedido p where p.statusPedido = :statusPedido and p.transacao.cliente = :cliente")
     Optional<Pedido> findByStatusPedido(StatusPedido statusPedido, Cliente cliente);
 }

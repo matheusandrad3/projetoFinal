@@ -16,12 +16,20 @@ public class ProdutoService {
     private ProdutoRepository produtoRepository;
 
     public Produto cadastrarProduto(Produto produto) {
-        produto.setDisponibilidade(DisponibilidadeProduto.DISPONIVEL);
+        if (produto.getQuantidadeEstoque() <= 0) {
+            produto.setDisponibilidade(DisponibilidadeProduto.INDISPONIVEL);
+        } else {
+            produto.setDisponibilidade(DisponibilidadeProduto.DISPONIVEL);
+        }
         return produtoRepository.save(produto);
     }
 
-    public List<Produto> listarProdutos() {
+    public List<Produto> listarProdutosDisponivel() {
         return produtoRepository.findAllDisponivel();
+    }
+
+    public List<Produto> listarProdutos() {
+        return produtoRepository.findAll();
     }
 
     public void deletarProduto(Long id) {
