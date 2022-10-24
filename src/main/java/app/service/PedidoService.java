@@ -132,7 +132,6 @@ public class PedidoService {
                 break;
             }
         }
-
         if (controle == 0) {
             ItemPedido item = new ItemPedido();
             item.setProduto(produto);
@@ -143,6 +142,7 @@ public class PedidoService {
             itensCompras.add(item);
             item.setPedidos(pedido);
         }
+
         pedido.setItemPedido(itensCompras);
         pedido.setDataCompra(LocalDate.now());
         pedido.setValorTotal(calcularTotalPedidos(itensCompras, pedido));
@@ -152,21 +152,23 @@ public class PedidoService {
     }
 
     public boolean finalizarCompra(Cliente cliente, Pedido pedido, List<ItemPedido> itensCompras, String formaPagmento) {
-        pedido.setTransacao(cliente.getTransacao());
-        pedido.setStatusPedido(StatusPedido.CONCLUIDO);
-        pedido.setFormaPagmento(formaPagmento);
-        pedido.setDataCompra(LocalDate.now());
-        Double valorTotal = calcularTotalPedidos(itensCompras, pedido);
-        if (valorTotal != 0) {
-            pedido.setValorTotal(valorTotal);
-            for (ItemPedido i : itensCompras) {
-                i.setPedidos(pedido);
-                consumirEstoque(i.getProduto().getId(), i.getQuantidade());
-            }
-            pedido.setItemPedido(itensCompras);
-            pedidoRepository.save(pedido);
-            return true;
-        }
+       if (pedido != null) {
+           pedido.setTransacao(cliente.getTransacao());
+           pedido.setStatusPedido(StatusPedido.CONCLUIDO);
+           pedido.setFormaPagmento(formaPagmento);
+           pedido.setDataCompra(LocalDate.now());
+           Double valorTotal = calcularTotalPedidos(itensCompras, pedido);
+           if (valorTotal != 0) {
+               pedido.setValorTotal(valorTotal);
+               for (ItemPedido i : itensCompras) {
+                   i.setPedidos(pedido);
+                   consumirEstoque(i.getProduto().getId(), i.getQuantidade());
+               }
+               pedido.setItemPedido(itensCompras);
+               pedidoRepository.save(pedido);
+               return true;
+           }
+       }
         return false;
     }
 
@@ -207,5 +209,29 @@ public class PedidoService {
         }
     }
 
-}
+/*    private List<ItemPedido> x(List<ItemPedido> itensCompras ) {
+        int controle = 0;
+        for (ItemPedido itens : itensCompras) {
+            if (itens.getProduto().getId().equals(produto.getId())) {
+                itens.setQuantidade(itens.getQuantidade() + 1);
+                itens.setValorTotal(0.0);
+                double valorTotal = itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario());
+                itens.setValorTotal(converterValor(valorTotal));
+                controle = 1;
+                itens.setPedidos(pedido);
+                break;
+            }
+        }
+        if (controle == 0) {
+            ItemPedido item = new ItemPedido();
+            item.setProduto(produto);
+            item.setValorUnitario((double) produto.getValorVenda());
+            item.setQuantidade(item.getQuantidade() + 1);
+            double valorTotal = item.getValorTotal() + (item.getQuantidade() * item.getValorUnitario());
+            item.setValorTotal(converterValor(valorTotal));
+            itensCompras.add(item);
+            item.setPedidos(pedido);
+        }
+    }*/
+ }
 
