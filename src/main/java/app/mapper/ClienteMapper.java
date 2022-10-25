@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface ClienteMapper {
 
-    @Mapping(target = "enderecos", source = "endereco")
-    @Mapping(target = "enderecos.uf", source = "endereco.uf")
+    @Mapping(target = "endereco", source = "endereco")
+    @Mapping(target = "endereco.uf", source = "endereco.uf")
     Cliente toCliente(ClienteRequestDTO dto);
 }

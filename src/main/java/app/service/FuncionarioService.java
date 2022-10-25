@@ -2,8 +2,11 @@ package app.service;
 
 import app.exeception.AraujoExeception;
 import app.model.Cliente;
+import app.model.Funcionario;
+import app.model.Produto;
 import app.model.Transacao;
 import app.repository.ClienteRepository;
+import app.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -12,21 +15,21 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-public class ClienteService {
+public class FuncionarioService {
 
     @Autowired
-    private ClienteRepository repository;
+    private FuncionarioRepository repository;
 
-    public Cliente cadastarCliente(Cliente cliente) {
-        cliente.setSenha(new BCryptPasswordEncoder().encode(cliente.getSenha()));
-        validarCpf(cliente.getCpf());
-        validarRg(cliente.getRg());
-        cliente.getEndereco().setCliente(cliente);
-        Transacao transacao = new Transacao();
-        transacao.setCliente(cliente);
-        cliente.setTransacao(transacao);
-        return repository.save(cliente);
+    public Funcionario cadastarFuncionario(Funcionario funcionario) {
+        funcionario.setSenha(new BCryptPasswordEncoder().encode(funcionario.getSenha()));
+        validarCpf(funcionario.getCpf());
+        validarRg(funcionario.getRg());
+
+        return repository.save(funcionario);
     }
 
     private void validarCpf(String cpf) {
@@ -41,13 +44,28 @@ public class ClienteService {
         }
     }
 
-    public Cliente bucarUsuario() {
+    public Funcionario bucarUsuario() {
         Authentication auntenticado = SecurityContextHolder.getContext().getAuthentication();
-        Cliente cliente = null;
+        Funcionario funcionario = null;
         if (!(auntenticado instanceof AnonymousAuthenticationToken)) {
             String email = auntenticado.getName();
-            cliente = repository.getClienteByEmail(email);
+            funcionario = repository.getFuncionarioByEmail(email);
         }
-        return cliente;
+        return funcionario;
+    }
+
+    public List<Funcionario> listarFuncionarios() {
+        return repository.findAll();
+    }
+
+    public Optional<Funcionario> buscarFuncionario(Long id) {
+        return repository.findById(id);
+    }
+
+    public void deletarFuncionario(Long id) { repository.deleteById(id); }
+
+    public void atualizarFuncionario(Funcionario funcionario) {
+        funcionario.setSenha(new BCryptPasswordEncoder().encode(funcionario.getSenha()));
+        repository.save(funcionario);
     }
 }

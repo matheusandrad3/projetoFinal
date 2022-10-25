@@ -36,7 +36,7 @@ public class ProdutoService {
         produtoRepository.deleteById(id);
     }
 
-    public Optional<Produto> atualizarProduto(Long id) {
+    public Optional<Produto> buscarProduto(Long id) {
         return produtoRepository.findById(id);
     }
 }
