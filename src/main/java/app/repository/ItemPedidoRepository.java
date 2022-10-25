@@ -18,6 +18,6 @@ public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long> {
     List<RelatorioItemPedidoResponseDTO> recuperarItensPedido(LocalDate start, LocalDate end);
 
 
-    @Query("from ItemPedido ip where ip.pedidos.id = :id and ip.produto.disponibilidade = 'DISPONIVEL'")
+    @Query("from ItemPedido ip where ip.pedidos.id = :id ")
     List<ItemPedido> findAllByIdPedido(Long id);
 }
