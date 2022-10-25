@@ -52,7 +52,7 @@
                                     <div class="d-flex">
                                         <form th:action="@{/cliente/carrinho/alterarQuantidade/{id}/{acao}(id=${item.produto.id}, acao=${1})}"
                                               th:method="PUT">
-                                            <button th:if="${item.quantidade < item.produto.quantidadeEstoque}" type="submit" style=" border: none;background-color:white">
+                                            <button th:if="${item.produto.quantidadeEstoque >= 1}" type="submit" style=" border: none;background-color:white">
                                                 <i class="bi bi-plus-circle"></i>
                                             </button>
 
@@ -81,7 +81,7 @@
                                     </button>
                                 </form>
                             </td>
-                            <td th:if="${item.quantidade == item.produto.quantidadeEstoque}">
+                            <td th:if="${item.produto.quantidadeEstoque == 0}">
                                 <span style="color:red">Qtd max de produtos permitida</span>
                             </td>
                         </tr>

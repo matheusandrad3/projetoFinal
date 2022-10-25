@@ -73,7 +73,7 @@ public class PedidoService {
         for (ItemPedido itens : itensCompras) {
             Integer quantidadeEstoque = produtoRepository.getQuantidadeEstoqueById(id);
             if (itens.getProduto().getId().equals(id)) {
-                if (acao.equals(1) && itens.getQuantidade() < quantidadeEstoque) {
+                if (acao.equals(1) && quantidadeEstoque > 0) {
                     itens.setQuantidade(itens.getQuantidade() + 1);
                     itens.setValorTotal(0.);
                     valorTotal = itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario());
@@ -105,6 +105,8 @@ public class PedidoService {
         pedido.setTransacao(cliente.getTransacao());
         if (produto.getQuantidadeEstoque() > 0) {
             produto.setDisponibilidade(DisponibilidadeProduto.DISPONIVEL);
+        } else {
+            produto.setDisponibilidade(DisponibilidadeProduto.INDISPONIVEL);
         }
         produtoRepository.save(produto);
         pedidoRepository.save(pedido);
