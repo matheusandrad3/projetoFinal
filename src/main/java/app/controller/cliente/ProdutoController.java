@@ -23,6 +23,7 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository repository;
 
+
     @GetMapping("/produtos")
     public ModelAndView index() {
         ModelAndView model = new ModelAndView("/index");

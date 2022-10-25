@@ -3,12 +3,14 @@ package app.controller.cliente;
 import app.model.Cliente;
 import app.model.ItemPedido;
 import app.model.Pedido;
+import app.model.Produto;
 import app.service.ClienteService;
 import app.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import java.util.List;
 
@@ -22,17 +24,20 @@ public class PedidoController {
     @Autowired
     private ClienteService clienteService;
 
+
     @GetMapping()
     public ModelAndView chamarCarrinho() {
         ModelAndView model = new ModelAndView("/cliente/carrinho");
         Cliente cliente = clienteService.bucarUsuario();
         Pedido pedido = pedidoService.buscarPedido(cliente);
         List<ItemPedido> itensCompras = pedidoService.listaPedido(pedido);
+        Produto produto = new Produto();
         Pedido compra = new Pedido();
         compra.setValorTotal(pedidoService.calcularTotalPedidos(itensCompras, pedido));
         model.addObject("compra", compra);
         model.addObject("listaItens", itensCompras);
         model.addObject("cliente", cliente);
+        model.addObject("produto", produto);
         return model;
     }
 
@@ -67,6 +72,7 @@ public class PedidoController {
     public String alterarQuantidade(@PathVariable Long id, @PathVariable Integer acao) {
         pedidoService.alterarQuantidade(id, acao);
         return "redirect:/cliente/carrinho";
+
     }
 
     @DeleteMapping("/remover/{id}")
