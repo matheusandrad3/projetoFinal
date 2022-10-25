@@ -35,7 +35,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .formLogin(
                         form -> form
                                 .loginPage("/cliente/login")
-                                .defaultSuccessUrl("/cliente/carrinho", true)
+                                .defaultSuccessUrl("/produtos", true)
                                 .permitAll()
                 )
                 .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/home"));

@@ -67,7 +67,7 @@ public class ProdutoController {
     @GetMapping("/produtos/destaque")
     public ModelAndView buscarPorDestaque() {
         ModelAndView model = new ModelAndView("/cliente/produtos/destaque");
-        model.addObject("listaProdutos", repository.findByCategoria("destaque semana"));
+        model.addObject("listaProdutos", repository.findByCategoria("Destaques Semana"));
         return model;
     }
     @PostMapping("/produtos/pesquisarnome")
