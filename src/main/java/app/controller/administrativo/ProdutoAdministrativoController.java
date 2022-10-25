@@ -53,7 +53,7 @@ public class ProdutoAdministrativoController {
 
     @PutMapping("/editar/{id}")
     public ModelAndView editar(@PathVariable("id") Long id) {
-        Optional<Produto> produto = service.atualizarProduto(id);
+        Optional<Produto> produto = service.buscarProduto(id);
         return cadastrar(mapper.toProdutoRequestDTO(produto.get()));
     }
 }
