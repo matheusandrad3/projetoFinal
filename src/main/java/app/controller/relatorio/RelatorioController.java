@@ -91,6 +91,12 @@ public class RelatorioController {
 
     @PostMapping("/pedidos")
     public ResponseEntity<byte[]> gerarRelatorioPedidos(FiltroDataRequestDTO dto) throws JRException, FileNotFoundException {
+        if (dto.getDataInicio().equals("")) {
+            dto.setDataInicio(LocalDate.now().toString());
+        }
+        if (dto.getDataFinal().equals("")){
+            dto.setDataFinal(LocalDate.now().toString());
+        }
         List<RelatorioItemPedidoResponseDTO> lista = itemPedidoRepository.recuperarItensPedido(LocalDate.parse(dto.getDataInicio()), LocalDate.parse(dto.getDataFinal()));
         try {
             Map<String, Object> empParams = new HashMap<String, Object>();
