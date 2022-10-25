@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -50,6 +49,5 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(
                         "select  username, 'users' as authority from users where username=?")
                 .passwordEncoder(new BCryptPasswordEncoder());
-
     }
 }
