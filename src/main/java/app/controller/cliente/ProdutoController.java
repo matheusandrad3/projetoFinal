@@ -71,9 +71,9 @@ public class ProdutoController {
         return model;
     }
     @PostMapping("/produtos/pesquisarnome")
-    public ModelAndView buscarPorNome(@RequestParam("nomepesquisa") String nomepesquisa) {
+    public ModelAndView buscarPorNome(@RequestParam("nomepesquisa") String nomePesquisa) {
         ModelAndView model = new ModelAndView("/cliente/produtos/nome");
-        model.addObject("listaProdutos", repository.findByName(nomepesquisa));
+        model.addObject("listaProdutos", repository.findByName(nomePesquisa));
         model.addObject("listaProdutobj", new Produto());
         return model;
     }
