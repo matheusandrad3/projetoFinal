@@ -29,7 +29,7 @@ public class ProdutoService {
     }
 
     public List<Produto> listarProdutos() {
-        return produtoRepository.findAllDisponivel();
+        return produtoRepository.findAll();
     }
 
     public void deletarProduto(Long id) {
