@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/cliente/carrinho")
@@ -30,6 +31,9 @@ public class PedidoController {
         ModelAndView model = new ModelAndView("/cliente/carrinho");
         Cliente cliente = clienteService.bucarUsuario();
         Pedido pedido = pedidoService.buscarPedido(cliente);
+        if (pedido == null) {
+            pedido = new Pedido();
+        }
         List<ItemPedido> itensCompras = pedidoService.listaPedido(pedido);
         Produto produto = new Produto();
         Pedido compra = new Pedido();

@@ -1,6 +1,5 @@
 package app.service;
 
-import app.exeception.AraujoExeception;
 import app.model.Cliente;
 import app.model.ItemPedido;
 import app.model.Pedido;
@@ -11,8 +10,6 @@ import app.repository.ItemPedidoRepository;
 import app.repository.PedidoRepository;
 import app.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
@@ -47,23 +44,15 @@ public class PedidoService {
         return converterValor(valorTotal);
     }
 
-    public void consumirEstoque(Long id, Integer quantidade) {
-        Optional<Produto> produto = produtoRepository.findById(id);
-        Produto p = produto.get();
-        if (p.getQuantidadeEstoque() >= quantidade) {
-            p.setQuantidadeEstoque(p.getQuantidadeEstoque() - quantidade);
-            if (p.getQuantidadeEstoque() == 0) {
-                p.setDisponibilidade(DisponibilidadeProduto.INDISPONIVEL);
-            }
-        } else {
-            throw new AraujoExeception("Quantidade indisponível!", HttpStatus.NOT_FOUND);
-        }
-    }
-
     public void removerCarrinho(Long id, Pedido pedido) {
         for (ItemPedido itens : listaPedido(pedido)) {
             if (itens.getProduto().getId().equals(id)) {
                 itemPedidoRepository.delete(itens);
+                Integer quantidade = itens.getQuantidade();
+                itens.getProduto().setQuantidadeEstoque(itens.getProduto().getQuantidadeEstoque() + quantidade);
+                if (itens.getProduto().getQuantidadeEstoque() > 0) {
+                    itens.getProduto().setDisponibilidade(DisponibilidadeProduto.DISPONIVEL);
+                }
                 break;
             }
         }
@@ -77,6 +66,8 @@ public class PedidoService {
         Cliente cliente = clienteService.bucarUsuario();
         Pedido pedido = buscarPedido(cliente);
         List<ItemPedido> itensCompras = listaPedido(pedido);
+        Optional<Produto> produtoOptional = produtoRepository.findById(id);
+        Produto produto = produtoOptional.get();
 
         double valorTotal = 0.0;
         for (ItemPedido itens : itensCompras) {
@@ -87,9 +78,11 @@ public class PedidoService {
                     itens.setValorTotal(0.);
                     valorTotal = itens.getValorTotal() + (itens.getQuantidade() * itens.getValorUnitario());
                     itens.setValorTotal(converterValor(valorTotal));
+                    produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - 1);
 
                 } else if (acao == 0) {
                     itens.setQuantidade(itens.getQuantidade() - 1);
+                    produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() + 1);
                     if (itens.getQuantidade() == 0) {
                         itemPedidoRepository.delete(itens);
                         itensCompras.remove(itens);
@@ -110,6 +103,10 @@ public class PedidoService {
         pedido.setDataCompra(LocalDate.now());
         pedido.setValorTotal(calcularTotalPedidos(itensCompras, pedido));
         pedido.setTransacao(cliente.getTransacao());
+        if (produto.getQuantidadeEstoque() > 0) {
+            produto.setDisponibilidade(DisponibilidadeProduto.DISPONIVEL);
+        }
+        produtoRepository.save(produto);
         pedidoRepository.save(pedido);
     }
 
@@ -142,12 +139,17 @@ public class PedidoService {
             itensCompras.add(item);
             item.setPedidos(pedido);
         }
+        produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - 1);
+        if (produto.getQuantidadeEstoque() == 0) {
+            produto.setDisponibilidade(DisponibilidadeProduto.INDISPONIVEL);
+        }
 
         pedido.setItemPedido(itensCompras);
         pedido.setDataCompra(LocalDate.now());
         pedido.setValorTotal(calcularTotalPedidos(itensCompras, pedido));
         pedido.setTransacao(cliente.getTransacao());
         pedidoRepository.save(pedido);
+        produtoRepository.save(produto);
 
     }
 
@@ -162,7 +164,6 @@ public class PedidoService {
                pedido.setValorTotal(valorTotal);
                for (ItemPedido i : itensCompras) {
                    i.setPedidos(pedido);
-                   consumirEstoque(i.getProduto().getId(), i.getQuantidade());
                }
                pedido.setItemPedido(itensCompras);
                pedidoRepository.save(pedido);
