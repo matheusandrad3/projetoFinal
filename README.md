@@ -63,6 +63,7 @@ O projeto será desenvolvido em cinco sprints.
 
 ![image](https://user-images.githubusercontent.com/98560895/198059220-8ad8c0bc-6297-43a2-9b08-f73a8bd9a919.png)
 
+## 💻 Protótipo do Figma
 
-
+![image](https://user-images.githubusercontent.com/98560895/198060127-606fc3de-739c-46fd-8bdb-bf5987b949ce.png)
 
