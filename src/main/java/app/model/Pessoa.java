@@ -1,7 +1,5 @@
 package app.model;
 
-import org.hibernate.validator.constraints.br.CPF;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
