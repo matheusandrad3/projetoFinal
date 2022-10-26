@@ -118,6 +118,23 @@ O projeto será desenvolvido em cinco sprints.
 ![image](https://user-images.githubusercontent.com/98560895/198107684-b759b282-6ecc-4483-ae75-8329ed0a6137.png)
 
 
+## 🚀 Plano de execução - Sprint 4
+
+### 💻 Criação dos relatórios 
+
+#### - Relatório de estoque
+
+![image](https://user-images.githubusercontent.com/98560895/198112151-891f6cdd-973e-4640-b72e-e59c245f8c4f.png)
+
+![image](https://user-images.githubusercontent.com/98560895/198110056-2feb39b2-af6d-4636-99f9-2dcad34550b0.png)
+
+#### - Relatório de Vendas com filtro de data
+
+![image](https://user-images.githubusercontent.com/98560895/198112395-4e5d275d-b93e-41ea-9e0c-523685250ef3.png)
+
+![image](https://user-images.githubusercontent.com/98560895/198110452-14d7ffdf-f97e-4e23-9c4c-498f416d8732.png)
+
+
 
 
 
