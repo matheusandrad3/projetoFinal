@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_funcionario")
+@Table(name = "TB_FUNCIONARIO")
 public class Funcionario extends Pessoa{
 
     @NotBlank(message = "O Cargo não pode ser vazio!")
