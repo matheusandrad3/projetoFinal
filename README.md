@@ -83,13 +83,12 @@ O projeto será desenvolvido em cinco sprints.
 
 ## 🚀 Plano de execução - Sprint 2
 
-### 💻 Cadastro de produto
-
-#### Cadastro do produto via painel administrativo
+### 💻 Cadastro de produto via painel administrativo
 
 ![image](https://user-images.githubusercontent.com/98560895/198104567-cb645ca1-0490-4041-8f64-04301a8caf2c.png)
 
-#### Atualização e exclusão do produto
+
+### 💻 Atualização e exclusão do produto
 
 ![image](https://user-images.githubusercontent.com/98560895/198104985-7979aa78-da28-4597-8054-c33f784db740.png)
 
@@ -120,15 +119,13 @@ O projeto será desenvolvido em cinco sprints.
 
 ## 🚀 Plano de execução - Sprint 4
 
-### 💻 Criação dos relatórios 
-
-#### - Relatório de estoque
+### 💻 Criação do relatórios
 
 ![image](https://user-images.githubusercontent.com/98560895/198112151-891f6cdd-973e-4640-b72e-e59c245f8c4f.png)
 
 ![image](https://user-images.githubusercontent.com/98560895/198110056-2feb39b2-af6d-4636-99f9-2dcad34550b0.png)
 
-#### - Relatório de Vendas com filtro de data
+### 💻 Criação do relatório de vendas com filtro de data
 
 ![image](https://user-images.githubusercontent.com/98560895/198112395-4e5d275d-b93e-41ea-9e0c-523685250ef3.png)
 
