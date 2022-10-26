@@ -32,35 +32,35 @@ public class ProdutoController {
     @GetMapping("/produtos/higiene")
     public ModelAndView buscarPorHigiene() {
         ModelAndView model = new ModelAndView("/cliente/produtos/higiene");
-        model.addObject("listaProdutos", repository.findByCategoria("higiene"));
+        model.addObject("listaProdutos", repository.findByCategoria("Higiene"));
         return model;
     }
 
     @GetMapping("/produtos/saude")
     public ModelAndView buscarPorSaude() {
         ModelAndView model = new ModelAndView("/cliente/produtos/saude");
-        model.addObject("listaProdutos", repository.findByCategoria("cuidado saude"));
+        model.addObject("listaProdutos", repository.findByCategoria("Cuidado Saude"));
         return model;
     }
 
     @GetMapping("/produtos/nossas")
     public ModelAndView buscarPorNossas() {
         ModelAndView model = new ModelAndView("/cliente/produtos/nossas");
-        model.addObject("listaProdutos", repository.findByCategoria("nossas marcas"));
+        model.addObject("listaProdutos", repository.findByCategoria("Nossas Marcas"));
         return model;
     }
 
     @GetMapping("/produtos/beleza")
     public ModelAndView buscarPorBeleza() {
         ModelAndView model = new ModelAndView("/cliente/produtos/beleza");
-        model.addObject("listaProdutos", repository.findByCategoria("beleza"));
+        model.addObject("listaProdutos", repository.findByCategoria("Beleza"));
         return model;
     }
 
     @GetMapping("/produtos/maisnossas")
     public ModelAndView buscarPorMaisNossasMarcas() {
         ModelAndView model = new ModelAndView("/cliente/produtos/maisNossas");
-        model.addObject("listaProdutos", repository.findByCategoria("mais nossas marcas"));
+        model.addObject("listaProdutos", repository.findByCategoria("Mais Nossas Marcas"));
         return model;
     }
 
