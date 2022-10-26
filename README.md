@@ -99,6 +99,24 @@ O projeto será desenvolvido em cinco sprints.
 
 ## 🚀 Plano de execução - Sprint 3
 
+### 💻 Criar um pedido de compra
+
+![image](https://user-images.githubusercontent.com/98560895/198106340-81d594dd-3336-4b92-b332-ecc93a8d7087.png)
+
+![image](https://user-images.githubusercontent.com/98560895/198106423-a371fe0f-e9f4-454a-abbc-b57ad316e82f.png)
+
+![image](https://user-images.githubusercontent.com/98560895/198106714-4268002f-e52f-42d7-aaa4-e4b1fc4df474.png)
+
+![image](https://user-images.githubusercontent.com/98560895/198106806-39ebd56f-de4f-4a0c-b023-ca830c602de3.png)
+
+#### Realização modificações no pedido
+
+![image](https://user-images.githubusercontent.com/98560895/198107472-ab6ea007-13cc-48ab-bc8c-a17b9a231310.png)
+#### Realização da leitura do pedido
+
+![image](https://user-images.githubusercontent.com/98560895/198107684-b759b282-6ecc-4483-ae75-8329ed0a6137.png)
+
+
 
 
 
