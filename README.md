@@ -137,6 +137,17 @@ O projeto será desenvolvido em cinco sprints.
 
 
 
+## 🚀 Plano de execução - Sprint 5
+
+### 💻 Integração entre back-end e front-end
+
+![image](https://user-images.githubusercontent.com/98560895/198113448-d252dbd7-12ae-4097-921c-c6fce2ac2487.png)
+
+
+### 💻 Criação de Filtros de busca personalizados
+
+![image](https://user-images.githubusercontent.com/98560895/198113128-29e4cd3c-e48a-4667-b51a-22594010b182.png)
+
 
 
 
