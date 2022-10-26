@@ -59,11 +59,26 @@ O projeto será desenvolvido em cinco sprints.
  - Bootstrap
  - Jquery
 
-## 💻 Quadro Kanban
+
+## 🚀 Plano de execução - Sprint 1
+
+
+### 💻 Quadro Kanban
 
 ![image](https://user-images.githubusercontent.com/98560895/198059220-8ad8c0bc-6297-43a2-9b08-f73a8bd9a919.png)
 
-## 💻 Protótipo do Figma
+### 💻 Protótipo do Figma
 
 ![image](https://user-images.githubusercontent.com/98560895/198060127-606fc3de-739c-46fd-8bdb-bf5987b949ce.png)
+
+### 💻Implementação da tela de login
+
+![image](https://user-images.githubusercontent.com/98560895/198103821-80f927b5-d868-472a-a316-51549fad1dfc.png)
+
+![image](https://user-images.githubusercontent.com/98560895/198103649-ae104ac5-7f97-46bf-b1a6-831291317f9c.png)
+
+
+
+
+
 
