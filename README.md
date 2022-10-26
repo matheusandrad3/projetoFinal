@@ -83,7 +83,25 @@ O projeto será desenvolvido em cinco sprints.
 
 ## 🚀 Plano de execução - Sprint 2
 
-### 💻 
+### 💻 Cadastro de produto
+
+#### Cadastro do produto via painel administrativo
+
+![image](https://user-images.githubusercontent.com/98560895/198104567-cb645ca1-0490-4041-8f64-04301a8caf2c.png)
+
+#### Atualização e exclusão do produto
+
+![image](https://user-images.githubusercontent.com/98560895/198104985-7979aa78-da28-4597-8054-c33f784db740.png)
+
+![image](https://user-images.githubusercontent.com/98560895/198105029-fd6f34b4-d52e-43d3-825d-28a32d94e1f6.png)
+
+![image](https://user-images.githubusercontent.com/98560895/198105504-dfc4d932-8983-4984-b45c-39e39d10151f.png)
+
+## 🚀 Plano de execução - Sprint 3
+
+
+
+
 
 
 
