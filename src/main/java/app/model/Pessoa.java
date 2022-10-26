@@ -26,7 +26,6 @@ public abstract class Pessoa {
     @Column(name = "TELEFONE")
     private String telefone;
 
-    @CPF(message = "CPF inválido!")
     @Column(name = "CPF", unique = true)
     @Size(min = 11, max = 11, message = "O CPF deve conter 11 digitos!")
     private String cpf;
