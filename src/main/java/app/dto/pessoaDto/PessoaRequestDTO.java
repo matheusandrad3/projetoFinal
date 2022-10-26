@@ -20,7 +20,6 @@ public abstract class PessoaRequestDTO {
 
     private String telefone;
 
-    @CPF(message = "CPF inválido!")
     @Size(min = 11, max = 11, message = "O CPF deve conter 11 digitos!")
     private String cpf;
 
