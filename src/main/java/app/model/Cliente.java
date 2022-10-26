@@ -3,7 +3,7 @@ package app.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "TB_CLIENTE")
 public class Cliente extends Pessoa{
 
     @ManyToOne(cascade = CascadeType.ALL)
