@@ -109,10 +109,11 @@ O projeto será desenvolvido em cinco sprints.
 
 ![image](https://user-images.githubusercontent.com/98560895/198106806-39ebd56f-de4f-4a0c-b023-ca830c602de3.png)
 
-#### Realização modificações no pedido
+### 💻 Realização modificações no pedido
 
 ![image](https://user-images.githubusercontent.com/98560895/198107472-ab6ea007-13cc-48ab-bc8c-a17b9a231310.png)
-#### Realização da leitura do pedido
+
+### 💻 Realização da leitura do pedido
 
 ![image](https://user-images.githubusercontent.com/98560895/198107684-b759b282-6ecc-4483-ae75-8329ed0a6137.png)
 
