@@ -77,8 +77,13 @@ O projeto será desenvolvido em cinco sprints.
 
 ![image](https://user-images.githubusercontent.com/98560895/198103649-ae104ac5-7f97-46bf-b1a6-831291317f9c.png)
 
+### 💻Cadastro do cliente
 
+![image](https://user-images.githubusercontent.com/98560895/198104186-06e9e254-c4f4-462a-9304-f201b898031a.png)
 
+## 🚀 Plano de execução - Sprint 2
+
+### 💻 
 
 
 
