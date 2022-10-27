@@ -19,12 +19,23 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="/css/footer.css" rel="stylesheet"/>
 
     <title>Grupo5 - Home</title>
 
     <style>
     body {
       font-family: 'Roboto', sans-serif;
+    }
+    a{
+    text-decoration:none;
+    }
+
+    .produtos:hover{
+        box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+
     }
     </style>
 
@@ -85,17 +96,17 @@
                 </div>
                 <div class="container text-center" style="height: 350px">
                     <div class="row row-cols-2">
-                        <div class="col "><img th:src="@{/image/home15.png}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Vitaminas</span></div>
-                        <div class="col "><img th:src="@{/image/home16.png}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Beleza</span></div>
-                        <div class="col "><img th:src="@{/image/home18.png}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Casa</span></div>
-                        <div class="col "><img th:src="@{/image/home17.png}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Higiene</span></div>
+                        <div class="produtos col">
+                            <a href="/produtos/nossas"> <img th:src="@{/image/home15.png}" class="shadow-sm" style="height: 130px"><span class="text-muted">Vitaminas</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/nossas"> <img th:src="@{/image/home16.png}" class="shadow-sm" style="height: 130px"><span class="text-muted">Beleza</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/nossas"> <img th:src="@{/image/home18.png}" class=" shadow-sm" style="height: 130px"><span class="text-muted">Casa</span></a></div>
+                        <div class="produtos col ">
+                            <a href="/produtos/nossas"> <img th:src="@{/image/home17.png}" class="shadow-sm" style="height: 130px"><span class="text-muted">Higiene</span></a></div>
                     </div>
                 </div>
-                <div><a href="/produtos/nossas" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                <div><a href="/produtos/nossas" style="text-decoration:none"><span class="text-danger fw-semibold">Compre agora</span></a>
                 </div>
             </div>
         </div>
@@ -106,39 +117,47 @@
                 </div>
                 <div class="container text-center " style=" height: 350px ">
                     <div class="row row-cols-2 ">
-                        <div class="col "><img th:src="@{/image/home11.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Cotonete</span></div>
-                        <div class="col "><img th:src="@{/image/home12.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Gillette</span></div>
-                        <div class="col "><img th:src="@{/image/home13.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Desodorante</span></div>
-                        <div class="col "><img th:src="@{/image/home14.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Fio Dental</span></div>
+                        <div class="produtos col">
+                            <a href="/produtos/higiene"><img th:src="@{/image/home11.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Cotonete</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/higiene"><img th:src="@{/image/home12.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Gillette</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/higiene"><img th:src="@{/image/home13.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Desodorante</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/higiene"><img th:src="@{/image/home14.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Fio Dental</span></a></div>
 
                     </div>
                 </div>
-                <div><a href="/produtos/higiene" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                <div><a href="/produtos/higiene" style="text-decoration:none"><span class="text-danger fw-semibold">Compre agora</span></a>
                 </div>
             </div>
         </div>
         <div class="card mb-3  border border-0 shadow" style="width: 350px">
-            <div class="card-body">
+            <div  class="card-body">
                 <div class="bg-primary bg-opacity-10 w-100">
                     <h5 class="card-title mb-5 fw-bold">Beleza</h5>
                 </div>
                 <div class="container text-center" style="height: 350px">
                     <div class="row row-cols-2">
-                        <div class="col b"><img th:src="@{/image/home7.webp}" class="shadow-sm"
-                                                style="height: 130px"><span class="text-muted">Doctar Plus</span></div>
-                        <div class="col "><img th:src="@{/image/home8.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">kit Sanctio</span></div>
-                        <div class="col "><img th:src="@{/image/home9.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Creme</span></div>
-                        <div class="col "><img th:src="@{/image/home10.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Kit Protetor</span></div>
+                        <div class="produtos col">
+                            <a href="/produtos/beleza"><img th:src="@{/image/home7.webp}" class="shadow-sm"
+                                                style="height: 130px"><span class="text-muted">Doctar Plus</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/beleza"><img th:src="@{/image/home8.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">kit Sanctio</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/beleza"><img th:src="@{/image/home9.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Creme</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/beleza"><img th:src="@{/image/home10.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Kit Protetor</span></a></div>
                     </div>
                 </div>
-                <div><a href="/produtos/beleza" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                <div><a href="/produtos/beleza" style="text-decoration:none"><span class="text-danger fw-semibold">Compre agora</span></a>
                 </div>
             </div>
         </div>
@@ -149,21 +168,25 @@
                 </div>
                 <div class="container text-center" style="height: 350px">
                     <div class="row row-cols-2">
-                        <div class="col "><img th:src="@{/image/home19.webp}" class="shadow-sm"
+                        <div class="produtos col">
+                            <a href="/produtos/maisnossas"><img th:src="@{/image/home19.webp}" class="shadow-sm"
                                                style="height: 130px; width: 129px"> <span
-                                class="text-muted">Lanche</span></div>
-                        <div class="col "><img th:src="@{/image/home20.png}" class="shadow-sm"
+                                class="text-muted">Lanche</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/maisnossas"><img th:src="@{/image/home20.png}" class="shadow-sm"
                                                style="height: 130px; width: 129px"><span
-                                class="text-muted">Cuidados</span></div>
-                        <div class="col "><img th:src="@{/image/home21.png} " class="shadow-sm"
+                                class="text-muted">Cuidados</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/maisnossas"><img th:src="@{/image/home21.png} " class="shadow-sm"
                                                style="height: 130px; width: 129px"><span class="text-muted">Pet</span>
-                        </div>
-                        <div class="col "><img th:src="@{/image/home22.png}" class="shadow-sm"
+                            </a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/maisnossas"><img th:src="@{/image/home22.png}" class="shadow-sm"
                                                style="height: 130px; width: 129px"><span class="text-muted">Bags</span>
-                        </div>
+                            </a></div>
                     </div>
                 </div>
-                <div><a href="/produtos/maisnossas" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                <div><a href="/produtos/maisnossas" style="text-decoration:none"><span class="text-danger fw-semibold">Compre agora</span></a>
                 </div>
             </div>
         </div>
@@ -174,17 +197,21 @@
                 </div>
                 <div class="container text-center" style="height: 350px">
                     <div class="row row-cols-2">
-                        <div class="col "><img th:src="@{/image/home3.webp}" class="shadow-sm" style="height: 130px">
-                            <span class="text-muted">Fralda</span></div>
-                        <div class="col "><img th:src="@{/image/home4.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Fórmula</span></div>
-                        <div class="col "><img th:src="@{/image/home5.webp} " class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Bepantol</span></div>
-                        <div class="col "><img th:src="@{/image/home6.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Ninho 3+</span></div>
+                        <div class="produtos col">
+                            <a href="/produtos/saude"><img th:src="@{/image/home3.webp}" class="shadow-sm" style="height: 130px">
+                            <span class="text-muted">Fralda</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/saude"><img th:src="@{/image/home4.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Fórmula</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/saude"><img th:src="@{/image/home5.webp} " class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Bepantol</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/saude"><img th:src="@{/image/home6.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Ninho 3+</span></a></div>
                     </div>
                 </div>
-                <div><a href="/produtos/saude" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                <div><a href="/produtos/saude" style="text-decoration:none"><span class="text-danger fw-semibold">Compre agora</span></a>
                 </div>
             </div>
         </div>
@@ -195,29 +222,34 @@
                 </div>
                 <div class="container text-center" style="height: 350px">
                     <div class="row row-cols-2">
-                        <div class="col "><img th:src="@{/image/home1.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Dorflex</span></div>
-                        <div class="col "><img src="../static/image/estoque2.webp " th:src="@{/image/estoque2.webp}"
+                        <div class="produtos col">
+                            <a href="/produtos/destaque"><img th:src="@{/image/home1.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Dorflex</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/destaque"><img src="../static/image/estoque2.webp " th:src="@{/image/estoque2.webp}"
                                                class="shadow-sm" style="height: 130px"><span class="text-muted">Escova Colgate</span>
-                        </div>
-                        <div class="col "><img th:src="@{/image/home2.webp}" class="shadow-sm"
-                                               style="height: 130px"><span class="text-muted">Expec Xarope</span></div>
-                        <div class="col "><img src="../static/image/estoque4.webp" th:src="@{/image/estoque4.webp}"
+                            </a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/destaque"><img th:src="@{/image/home2.webp}" class="shadow-sm"
+                                               style="height: 130px"><span class="text-muted">Expec Xarope</span></a></div>
+                        <div class="produtos col">
+                            <a href="/produtos/destaque"><img src="../static/image/estoque4.webp" th:src="@{/image/estoque4.webp}"
                                                class="shadow-sm" style="height: 130px"><span class="text-muted">Kit Protetor</span>
-                        </div>
-
+                            </a></div>
                     </div>
                 </div>
-                <div><a href="/produtos/destaque" style="text-decoration:none"><span class="text-danger fw-semibold">Buy Now</span></a>
+                <div><a href="/produtos/destaque" style="text-decoration:none"><span class="text-danger fw-semibold">Compre agora</span></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Grupo 5 2022</p></div>
-</footer>
+<footer th:replace="components/footer :: footer"></footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
