@@ -26,6 +26,12 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="/css/footer.css" rel="stylesheet"/>
+
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.min.js"></script>
     <link rel="stylesheet" href="sweetalert2.min.css">
@@ -46,6 +52,9 @@
     margin:2px;
   }
 
+
+
+
     </style>
 
 </head>
@@ -63,12 +72,6 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100" th:src="@{/image/banner_mio_3.png}" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" th:src="@{/image/banner_mio_4.png}" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="..." alt="Third slide">
             </div>
         </div>
     </div>
@@ -127,12 +130,6 @@
                         <div class="carousel-item active">
                             <img class="d-block w-100" th:src="@{/image/bannerProd1.gif}" alt="First slide">
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="..." alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="..." alt="Third slide">
-                        </div>
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -141,7 +138,8 @@
                               th:action="@{/produtos/pesquisarnome}" th:method="POST">
                             <input name="nomepesquisa" class="form-control mr-sm-2" type="search"
                                    placeholder="Pesquise por nome" aria-label="Pesquisar">
-                            <button class="btn btn-outline-primary my-2 my-sm-0" style="margin-left:25px" type="submit">
+                            <button class="btn btn-outline-primary my-2 my-sm-0" style="margin-left:25px"
+                                    type="submit">
                                 Pesquisar
                             </button>
                         </form>
@@ -151,7 +149,8 @@
                     <div class="col mb-5" th:each="produto : ${listaProdutos}">
                         <div class="card h-100">
                             <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                            <div class="badge bg-dark text-white position-absolute"
+                                 style="top: 0.5rem; right: 0.5rem">
                                 Sale
                             </div>
                             <!-- Product image-->
@@ -179,7 +178,7 @@
 
                             <div class="container d-flex flex-row justify-content-around  align-items-center">
 
-                                <form class="card-footer p-1 pt-0 border-top-0 bg-transparent ">
+                                <form class="card-footer p-1 pt-0 border-top-0 bg-transparent">
 
                                     <button type="button" class="btn btn-outline-dark mt-auto" href="#"
                                             data-bs-toggle="modal" th:data-bs-target="'#form' + ${produto.id}">
@@ -188,13 +187,15 @@
                                 </form>
                                 <form class="card-footer p-1 pt-0 border-top-0 bg-transparent ">
                                     <button type="button" class="btn btn-outline-dark mt-auto" href="#"
-                                            data-bs-toggle="modal" th:data-bs-target="'#detalhes' + ${produto.id}">
+                                            data-bs-toggle="modal"
+                                            th:data-bs-target="'#detalhes' + ${produto.id}">
                                         <iconify-icon icon="icomoon-free:eye-plus" width="20"
                                                       height="20"></iconify-icon>
                                     </button>
                                 </form>
 
-                                <div class="modal fade" th:id="${'detalhes' + produto.id}" tabindex="-1" role="dialog"
+                                <div class="modal fade" th:id="${'detalhes' + produto.id}" tabindex="-1"
+                                     role="dialog"
                                      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -206,15 +207,19 @@
                                                 <div class="container">
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <img th:src="${produto.urlImagem}" style="width:200px"/>
-                                                            <h5 class="alert alert-primary" style="padding:10px">Nome
+                                                            <img th:src="${produto.urlImagem}"
+                                                                 style="width:200px"/>
+                                                            <h5 class="alert alert-primary"
+                                                                style="padding:10px">Nome
                                                                 Produto:</h5>
-                                                            <span class="fw-normal" th:text="${produto.nome}"></span>
+                                                            <span class="fw-normal"
+                                                                  th:text="${produto.nome}"></span>
                                                             <h5 class="alert alert-primary">Valor:</h5>
                                                             <span class="fw-normal "
                                                                   th:text="'R$ ' + ${produto.valorVenda}"></span>
                                                             <h5 class="alert alert-primary">Marca:</h5>
-                                                            <span class="fw-normal" th:text="${produto.marca}"></span>
+                                                            <span class="fw-normal"
+                                                                  th:text="${produto.marca}"></span>
 
                                                         </div>
                                                         <div class="col-6">
@@ -229,27 +234,30 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade container" th:id="${'form' + produto.id}" tabindex="-1"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                <div class="modal fade" th:id="${'form' + produto.id}" tabindex="-1"
+                                     role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header alert alert-danger">
-                                                <h1 class="modal-title fs-5 " id="exampleModalLabel">Você quer add esse
-                                                    produto ao seu carrinho?</h1>
+                                                <h1 class="modal-title fs-5 " id="exampleModalLabel">Adicionar
+                                                    ao seu carrinho?</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="card">
                                                     <img th:src="${produto.urlImagem}"
-                                                         class="card-img-top col align-self-center" style="width:200px"
+                                                         class="card-img-top col align-self-center"
+                                                         style="width:200px"
                                                          alt="..."/>
                                                     <div class="card-body ">
                                                         <form th:action="@{/cliente/carrinho/comprar/{id}(id=${produto.id})}"
                                                               th:method="POST">
-                                                            <input type="hidden" name="id" th:value="${produto.id}"/>
+                                                            <input type="hidden" name="id"
+                                                                   th:value="${produto.id}"/>
                                                             <button type="submit" th:onclick="'btnAlert(event)'"
-                                                                    class="btn btn-outline-danger mt-2"> Add
+                                                                    class="btn btn-outline-danger mt-2">
+                                                                Adicionar
                                                             </button>
                                                         </form>
                                                     </div>
@@ -268,12 +276,35 @@
         </div>
     </div>
 </section>
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Grupo 5 2022</p></div>
-    <script type="text/javascript">
+<footer th:replace="components/footer :: footer"></footer>
 
- function btnAlert(e){
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="jquery-2.1.4.min.js"></script>
+<script src="jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist
+/additional-methods.min.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+<!-- Inclusão do jQuery-->
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<!-- Inclusão do Plugin jQuery Validation-->
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+function btnAlert(e){
                       Swal.fire({
                       position: 'top-center',
                       icon: 'success',
@@ -283,8 +314,12 @@
                  })
 
  }
+
+
+
 </script>
-</footer>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
