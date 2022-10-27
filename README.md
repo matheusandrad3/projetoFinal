@@ -152,6 +152,8 @@ O projeto será desenvolvido em cinco sprints.
 ![image](https://user-images.githubusercontent.com/98560895/198113128-29e4cd3c-e48a-4667-b51a-22594010b182.png)
 
 
+## 📣 Slide apresentação final
 
+[Slide Apresentação]()
 
 
