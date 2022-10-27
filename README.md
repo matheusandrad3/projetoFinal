@@ -71,6 +71,10 @@ O projeto será desenvolvido em cinco sprints.
 
 ![image](https://user-images.githubusercontent.com/98560895/198060127-606fc3de-739c-46fd-8bdb-bf5987b949ce.png)
 
+### 💻 Construção do modelo entidade-relacionamento
+![Imagem do WhatsApp de 2022-10-26 à(s) 17 09 45](https://user-images.githubusercontent.com/98560895/198296270-f44e1970-fe6d-464c-98f8-276ce96ec4bb.jpg)
+
+
 ### 💻Implementação da tela de login
 
 ![image](https://user-images.githubusercontent.com/98560895/198103821-80f927b5-d868-472a-a316-51549fad1dfc.png)
