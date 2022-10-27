@@ -11,6 +11,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+
+import javax.validation.Valid;
 
 @Service
 public class ClienteService {
@@ -19,6 +22,7 @@ public class ClienteService {
     private ClienteRepository repository;
 
     public Cliente cadastarCliente(Cliente cliente) {
+
         cliente.setSenha(new BCryptPasswordEncoder().encode(cliente.getSenha()));
         validarCpf(cliente.getCpf());
         validarRg(cliente.getRg());

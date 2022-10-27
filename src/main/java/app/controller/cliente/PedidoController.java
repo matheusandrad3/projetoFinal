@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,7 @@ public class PedidoController {
         model.addObject("listaItens", itensCompras);
         model.addObject("cliente", cliente);
         model.addObject("produto", produto);
+
         return model;
     }
 

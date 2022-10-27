@@ -19,7 +19,6 @@ public class Endereco {
     private Cliente cliente;
 
     @Column(name = "CEP")
-    @Size(min = 9, max = 9, message = "O CEP deve estar no formato 99999-999")
     @NotBlank(message = "O campo cep não pode ser nulo ou vazio!")
     private String cep;
 

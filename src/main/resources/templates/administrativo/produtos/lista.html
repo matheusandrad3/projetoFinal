@@ -27,24 +27,24 @@
         <thead>
         <tr>
           <th>#</th>
-          <th>Descrição</th>
+          <th>Produto</th>
           <th>Quantidade em Estoque</th>
           <th>Valor de Venda</th>
           <th>Imagem</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="produto : ${listaProdutos}">
+        <tr class="mesa" th:each="produto : ${listaProdutos}">
           <td th:text="${produto.id}"></td>
-          <td th:text="${produto.descricao}"></td>
+          <td th:text="${produto.nome}"></td>
           <td th:text="${produto.quantidadeEstoque}"></td>
           <td th:text="${produto.valorVenda}"></td>
-          <td> <img style="width:50px" th:src="${produto.urlImagem}"></td>
+          <td><img style="width:50px" th:src="${produto.urlImagem}"></td>
 
 
           <td colspan="2">
             <form  th:action="@{/administrativo/produtos/editar/{id}(id=${produto.id})}" role="button" th:method="PUT" >
-             <button type="submit" class = "border-0"><iconify-icon icon="et:edit" width="20" height="20" title="Editar" aria-hidden="true"></iconify-icon></button>
+             <button type="submit" class= "border-0"><i class="bi bi-pencil"></i></button>
             </form>
 
             <!-- Button trigger modal -->

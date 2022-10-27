@@ -4,6 +4,7 @@
 </head>
 <body>
 <section layout:fragment="corpo">
+
     <div class="container mt-5 p-3 rounded cart">
         <div class="row no-gutters">
             <div class="col-md-8">
@@ -14,8 +15,8 @@
                     <h6 class="mb-0">Shopping cart</h6>
                     <div class="d-flex justify-content-between">
                         <!--                            <span th:text="No seu carrinho tem ' + ${item.quantidade} + ' itens '"></span>-->
-                        <div class="d-flex flex-row align-items-center"><span class="text-black-50">Sort by:</span>
-                            <div class="price ml-2"><span class="mr-1">price</span><i class="fa fa-angle-down"></i>
+                        <div class="d-flex flex-row align-items-center"><span class="text-black-50">Produtos</span>
+                            <div class="price ml-2"><span class="mr-1"></span><i class="fa fa-angle-down"></i>
                             </div>
                         </div>
                     </div>
@@ -81,8 +82,8 @@
                                     </button>
                                 </form>
                             </td>
-                            <td th:if="${item.produto.quantidadeEstoque == 0}">
-                                <span style="color:red">Qtd max de produtos permitida</span>
+                            <td>
+                                <span th:if="${item.produto.quantidadeEstoque == 0}" style="color:red">Qtd max de produtos permitida</span>
                             </td>
                         </tr>
                         </tbody>
@@ -92,11 +93,11 @@
             </div>
 
                 <div class="col-md-4">
-                    <form th:action="@{/cliente/carrinho/sucesso}" th:method="POST">
+                    <form id="formComprar" th:action="@{/cliente/carrinho/sucesso}" th:method="POST">
                     <div class="payment-info" >
-                        <div class="d-flex justify-content-between align-items-center"><span>Card details</span>
+                        <div class="d-flex justify-content-between align-items-center"><span>Destalhes do cartão</span>
                             <span th:text="${cliente.nome}" class="rounded text-primary" width="30"></span></div>
-                        <span class="type d-block mt-3 mb-1">Card type</span><label class="radio"> <input type="radio"
+                        <span class="type d-block mt-3 mb-1">Bandeira</span><label class="radio"> <input type="radio"
                                                                                                           name ="formaPagmento"
                                                                                                           value="Cartão de crédito MASTERCARD"
                                                                                                           checked>
@@ -123,14 +124,17 @@
                                                                                          placeholder="Nome"></div>
                         <div><label class="credit-card-label">Numero no cartão</label><input type="text"
                                                                                         class="form-control credit-inputs"
+                                                                                             data-mask="0000-0000-0000-0000"
                                                                                         placeholder="0000 0000 0000 0000">
                         </div>
                         <div class="row">
                             <div class="col-md-6"><label class="credit-card-label">Data</label><input type="text"
+                                                                                                      data-mask="00/00"
                                                                                                       class="form-control credit-inputs"
                                                                                                       placeholder="12/24">
                             </div>
                             <div class="col-md-6"><label class="credit-card-label">CVV</label><input type="text"
+                                                                                                     data-mask="000"
                                                                                                      class="form-control credit-inputs"
                                                                                                      placeholder="342">
                             </div>
@@ -144,7 +148,7 @@
                         <div class="d-flex justify-content-between information"><span>Total(Incl. taxas)</span><span
                                 th:text="'R$ ' + ${compra.valorTotal}">R$3000.00</span>
                         </div>
-                        <button th:if="${compra.valorTotal}" class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="submit">
+                        <button id="botaoComprar" th:if="${compra.valorTotal}" class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="submit">
                             <span th:text="'R$' + ${compra.valorTotal} + ' Checkout '">R$3000.00  </span>
                             <span><iconify-icon icon="bi:arrow-right"></iconify-icon> </span>
                         </button>
@@ -154,6 +158,54 @@
         </div>
     </div>
 </section>
+
+<script src="http://jqueryvalidation.org/files/dist
+/additional-methods.min.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+<!-- Inclusão do jQuery-->
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<!-- Inclusão do Plugin jQuery Validation-->
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(document).on('click', '#botaoComprar', function(e) {
+e.preventDefault();
+Swal.fire({
+  title: 'Compra efetuada com sucesso, Araujo agradece',
+  width: 600,
+  padding: '3em',
+  color: '#716add',
+  background: '#fff url(/images/trees.png)',
+  backdrop: `
+    rgba(0,0,123,0.4)
+    src="../static/image/200w.webp"
+    left top
+    no-repeat
+  `,
+        inputValidator: function (result) {
+            return new Promise(function (resolve, reject) {
+                if (result) {
+                    resolve();
+                } else {
+                    reject('You need to agree with the Terms');
+                }
+            })
+        }
+    }).then(function(result){
+        $('#formComprar').submit();
+    })
+});
+
+
+</script>
+<script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="jquery-2.1.4.min.js"></script>
+<script src="jquery.validate.min.js"></script>
 
 </body>
 </html>
