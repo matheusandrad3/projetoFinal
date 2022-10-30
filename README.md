@@ -154,6 +154,6 @@ O projeto será desenvolvido em cinco sprints.
 
 ## 📣 Slide apresentação final
 
-[Slide Apresentação]()
+[Slide Apresentação](https://www.canva.com/design/DAFFaCFu-8U/x18ocndQSlC8TF4PsV3VAw/view?utm_content=DAFFaCFu-8U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 
